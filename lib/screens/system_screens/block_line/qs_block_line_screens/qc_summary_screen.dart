@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:quality_system/backend/api_requests/api_calls.dart';
 import 'package:quality_system/components/backend/api_request.dart';
@@ -7,12 +6,12 @@ import 'package:quality_system/components/background.dart';
 import 'package:quality_system/components/custom_button_component.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/loading.dart';
+import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/constants/size.dart';
-import 'package:quality_system/screens/quality_station_screens/quality_station_forms_screen.dart';
-import 'package:quality_system/screens/variant_select_screen/variant_select_home_screen.dart';
+import 'package:quality_system/screens/system_screens/system_select_screen.dart';
 
-class SummaryQualityCheckScreen extends StatelessWidget {
-  SummaryQualityCheckScreen({
+class QCBlockLineSummaryScreen extends StatelessWidget {
+  QCBlockLineSummaryScreen({
     Key? key,
     this.measurername1,
     this.shift,
@@ -439,7 +438,7 @@ class SummaryQualityCheckScreen extends StatelessWidget {
                                 );
                               },
                             );
-                            await Get.offAll(() => VariantSelectScreen());
+                            await Get.offAll(() => SystemChooseScreen());
                           },
                           text: 'POST',
                           icon: Icon(

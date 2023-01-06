@@ -6,11 +6,16 @@ import 'package:quality_system/components/inspection/inspection_detail_card.dart
 import 'package:quality_system/constants/enums.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/controllers/associate_controller.dart';
-import 'package:quality_system/screens/quality_station_screens/quality_station_home.dart';
+import 'package:quality_system/screens/system_screens/block_line/qs_block_line_screens/qs_home_screen.dart';
+import 'package:quality_system/screens/system_screens/crank_line/qs_crank_line_screens/qs_home_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_head_line_screens/qs_home_screen.dart';
 
 class VariantAssociateDetailScreen extends StatelessWidget {
   final String variant;
-  VariantAssociateDetailScreen({Key? key, required this.variant})
+  final String? details;
+  final String system;
+  VariantAssociateDetailScreen(
+      {Key? key, required this.variant, this.details, required this.system})
       : super(key: key);
   final associateController = Get.put(AssociateController());
 
@@ -19,7 +24,7 @@ class VariantAssociateDetailScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       key: associateController.scaffoldKey,
-      backgroundColor: CustomTheme.of(context).primaryBackground,
+      backgroundColor: CustomTheme.of(context).secondaryColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
@@ -55,7 +60,11 @@ class VariantAssociateDetailScreen extends StatelessWidget {
                               InspectionDetailBox(
                                 title: 'Shift',
                                 boxType: InspectionDetailBoxType.Dropdown,
-                                options: const ['Yellow Shift', 'White Shift'],
+                                options: [
+                                  Shift.Blue.getShift,
+                                  Shift.White.getShift,
+                                  Shift.Yellow.getShift
+                                ],
                                 onChanged: (val) {
                                   associateController.shiftValue = val!;
                                 },
@@ -66,13 +75,13 @@ class VariantAssociateDetailScreen extends StatelessWidget {
                               InspectionDetailBox(
                                 title: 'Process Name',
                                 boxType: InspectionDetailBoxType.Dropdown,
-                                options: const [
-                                  'Process 1',
-                                  'Process 2',
-                                  'Process 3',
-                                  'Process 4',
-                                  'Process 5',
-                                  'Process 6'
+                                options: [
+                                  ProcessName.P1.getProcessName,
+                                  ProcessName.P2.getProcessName,
+                                  ProcessName.P3.getProcessName,
+                                  ProcessName.P4.getProcessName,
+                                  ProcessName.P5.getProcessName,
+                                  ProcessName.P6.getProcessName,
                                 ],
                                 onChanged: (val) {
                                   associateController.processnameValue = val!;
@@ -113,26 +122,50 @@ class VariantAssociateDetailScreen extends StatelessWidget {
           width: sysWidth,
           child: ElevatedButton.icon(
             onPressed: () async {
-              // if (!associateController.formKey.currentState!.validate()) {
-              //   return;
-              // }
+              if (!associateController.formKey.currentState!.validate()) {
+                return;
+              }
 
-              // if (associateController.shiftValue == '') {
-              //   return;
-              // }
-              // if (associateController.processnameValue == '') {
-              //   return;
-              // }
-
-              Get.to(() => QualityStationChooseScreen(
-                    measurername:
-                        associateController.measurernameController.text,
-                    partserialno:
-                        associateController.partserialnoController.text,
-                    processno: associateController.processnameValue,
-                    shift: associateController.shiftValue,
-                    variant: variant,
-                  ));
+              if (associateController.shiftValue == '') {
+                Get.rawSnackbar(message: 'Shift Value cannot be empty');
+                return;
+              }
+              if (associateController.processnameValue == '') {
+                Get.rawSnackbar(message: 'Process Name Value cannot be empty');
+                return;
+              }
+              if (system == SystemVariant.BlockLine.getVariant) {
+                Get.to(() => QSBlockLineHomeScreen(
+                      measurername:
+                          associateController.measurernameController.text,
+                      partserialno:
+                          associateController.partserialnoController.text,
+                      processno: associateController.processnameValue,
+                      shift: associateController.shiftValue,
+                      variant: variant,
+                    ));
+              } else if (system == SystemVariant.CrankLine.getVariant) {
+                Get.to(() => QSCrankLineHomeScreen(
+                      measurername:
+                          associateController.measurernameController.text,
+                      partserialno:
+                          associateController.partserialnoController.text,
+                      processno: associateController.processnameValue,
+                      shift: associateController.shiftValue,
+                      variant: variant,
+                    ));
+              } else if (system == SystemVariant.HeadLine.getVariant) {
+                Get.to(() => QSHeadLineHomeScreen(
+                      details: details ?? 'null',
+                      measurername:
+                          associateController.measurernameController.text,
+                      partserialno:
+                          associateController.partserialnoController.text,
+                      processno: associateController.processnameValue,
+                      shift: associateController.shiftValue,
+                      variant: variant,
+                    ));
+              }
             },
             label: const Text(
               'Next',

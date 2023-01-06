@@ -3,23 +3,11 @@ import 'package:get/get.dart';
 import 'package:quality_system/components/background.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/quality_station_choose_card.dart';
-import 'package:quality_system/screens/quality_station_screens/quality_station_forms_screen.dart';
+import 'package:quality_system/constants/enums.dart';
+import 'package:quality_system/screens/variant_select_screen/variant_select_home_screen.dart';
 
-class QualityStationChooseScreen extends StatelessWidget {
-  QualityStationChooseScreen({
-    Key? key,
-    required this.measurername,
-    required this.variant,
-    required this.shift,
-    required this.processno,
-    required this.partserialno,
-  }) : super(key: key);
-
-  final String measurername;
-  final String variant;
-  final String shift;
-  final String processno;
-  final String partserialno;
+class SystemChooseScreen extends StatelessWidget {
+  SystemChooseScreen({super.key});
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -31,7 +19,7 @@ class QualityStationChooseScreen extends StatelessWidget {
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Block QC stations',
+          'Select System',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: CustomTheme.of(context).secondaryText,
@@ -72,35 +60,30 @@ class QualityStationChooseScreen extends StatelessWidget {
                           QualityStationChooseCard(
                             icon: Icons.filter_1,
                             onPressed: () {
-                              Get.to(() => QualityStationFormScreen(
-                                    measurername: measurername,
-                                    partserialno: partserialno,
-                                    processname: processno,
-                                    shift: shift,
-                                    variant: variant,
+                              Get.to(() => VariantSelectScreen(
+                                    systemVariant:
+                                        SystemVariant.HeadLine.getVariant,
                                   ));
                             },
-                            title: 'QC Station 1',
+                            title: 'Head Line',
                           ),
                           QualityStationChooseCard(
                             icon: Icons.filter_2,
-                            onPressed: () {},
-                            title: 'QC Station 2',
+                            onPressed: () {
+                              Get.to(() => VariantSelectScreen(
+                                  systemVariant:
+                                      SystemVariant.CrankLine.getVariant));
+                            },
+                            title: 'Crank Line',
                           ),
                           QualityStationChooseCard(
                             icon: Icons.filter_3,
-                            onPressed: () {},
-                            title: 'QC Station 3',
-                          ),
-                          QualityStationChooseCard(
-                            icon: Icons.filter_4,
-                            onPressed: () {},
-                            title: 'QC Station 4',
-                          ),
-                          QualityStationChooseCard(
-                            icon: Icons.filter_5,
-                            onPressed: () {},
-                            title: 'QC Station 5',
+                            onPressed: () {
+                              Get.to(() => VariantSelectScreen(
+                                  systemVariant:
+                                      SystemVariant.BlockLine.getVariant));
+                            },
+                            title: 'Block Line',
                           ),
                         ],
                       ),

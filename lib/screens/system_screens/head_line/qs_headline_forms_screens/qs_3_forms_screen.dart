@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:quality_system/backend/api_requests/api_calls.dart';
 import 'package:quality_system/components/backend/api_request.dart';
 import 'package:quality_system/components/background.dart';
 import 'package:quality_system/components/custom_button_component.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:quality_system/components/loading.dart';
+import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
 import 'package:quality_system/constants/enums.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/controllers/quality_station_forms_controller.dart';
-import 'package:quality_system/screens/quality_station_screens/summary_quality_check_screen.dart';
+import 'package:quality_system/screens/system_screens/block_line/qs_block_line_screens/qc_summary_screen.dart';
+import 'package:quality_system/components/quality_station/header_text_widget.dart';
+import 'package:quality_system/components/quality_station/measured_value_form_field.dart';
 
-class QualityStationFormScreen extends StatelessWidget {
-  QualityStationFormScreen({
+class QS3HeadLineFormsScreen extends StatelessWidget {
+  QS3HeadLineFormsScreen({
     Key? key,
     required this.variant,
     required this.shift,
@@ -39,7 +40,7 @@ class QualityStationFormScreen extends StatelessWidget {
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Block',
+          'Head Line',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
@@ -803,7 +804,7 @@ class QualityStationFormScreen extends StatelessWidget {
                           //   return;
                           // }
 
-                          Get.to(() => SummaryQualityCheckScreen(
+                          Get.to(() => QCBlockLineSummaryScreen(
                                 measurername1: measurername,
                                 shift: shift,
                                 processname: processname,
@@ -898,279 +899,6 @@ class QualityStationFormScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class HeaderTitleWidget extends StatelessWidget {
-  const HeaderTitleWidget(
-      {Key? key, required this.title, required this.subtitle})
-      : super(key: key);
-
-  final String title;
-  final String subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: Get.height * 0.1,
-      decoration: const BoxDecoration(
-        color: Color(0x00EEEEEE),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: CustomTheme.of(context).bodyText1.override(
-                  fontFamily: 'Poppins',
-                  color: CustomTheme.of(context).secondaryText,
-                  fontSize: 20,
-                ),
-          ),
-          Text(subtitle,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 24,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w700)),
-        ],
-      ),
-    );
-  }
-}
-
-class MeasuredItemFormField extends StatelessWidget {
-  const MeasuredItemFormField(
-      {Key? key,
-      required this.controller,
-      required this.controllerString,
-      this.height,
-      this.width})
-      : super(key: key);
-
-  final double? height;
-  final double? width;
-
-  final TextEditingController? controller;
-  final String controllerString;
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Container(
-        width: width ?? sysWidth / 4,
-        height: height ?? sysHeight * 0.1,
-        decoration: BoxDecoration(
-          color: const Color(0xFFEEEEEE),
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: CustomTheme.of(context).secondaryText,
-            width: 3,
-          ),
-        ),
-        child: TextFormField(
-          controller: controller,
-          onChanged: (_) => EasyDebounce.debounce(
-            controllerString,
-            const Duration(milliseconds: 700),
-            () {},
-          ),
-          autofocus: true,
-          obscureText: false,
-          decoration: InputDecoration(
-            hintText: '[Enter Value...]',
-            hintStyle: CustomTheme.of(context).bodyText2,
-            border: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: Color(0x00000000),
-                width: 1,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(4.0),
-                topRight: Radius.circular(4.0),
-              ),
-            ),
-          ),
-          style: CustomTheme.of(context).bodyText1.override(
-                fontFamily: 'Poppins',
-                color: CustomTheme.of(context).secondaryText,
-              ),
-          textAlign: TextAlign.start,
-          keyboardType: TextInputType.number,
-        ),
-      ),
-    );
-  }
-}
-
-class BlockFormHeaderComponent extends StatelessWidget {
-  final double? height;
-  final double? width;
-  final String title;
-  final Color color;
-  const BlockFormHeaderComponent(
-      {Key? key,
-      this.height,
-      this.width,
-      required this.color,
-      required this.title})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width ?? sysWidth * 0.05,
-      height: sysHeight * 0.1,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: Colors.black,
-          width: 3,
-        ),
-      ),
-      child: Center(
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
-          style: CustomTheme.of(context).bodyText1.override(
-                fontFamily: 'Poppins',
-                color: CustomTheme.of(context).secondaryText,
-                fontSize: 14,
-              ),
-        ),
-      ),
-    );
-  }
-}
-
-class MeasuredItemRadioButtonField extends StatefulWidget {
-  MeasuredItemRadioButtonField(
-      {Key? key,
-      required this.onChangedNg,
-      required this.onChangedCr,
-      required this.onChangedOk})
-      : super(key: key);
-
-  void Function() onChangedOk;
-  void Function() onChangedCr;
-  void Function() onChangedNg;
-
-  @override
-  State<MeasuredItemRadioButtonField> createState() =>
-      _MeasuredItemRadioButtonFieldState();
-}
-
-class _MeasuredItemRadioButtonFieldState
-    extends State<MeasuredItemRadioButtonField> {
-  MeasuredItemCheck value = MeasuredItemCheck.OK;
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Container(
-          width: sysWidth / 4,
-          height: sysHeight * 0.1,
-          decoration: BoxDecoration(
-            color: const Color(0xFFEEEEEE),
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: CustomTheme.of(context).secondaryText,
-              width: 3,
-            ),
-          ),
-          child: Row(
-            children: [
-              SizedBox(
-                child: Row(
-                  children: [
-                    Radio(
-                        activeColor: Colors.green,
-                        value: MeasuredItemCheck.OK,
-                        groupValue: value,
-                        onChanged: (v) {
-                          value = MeasuredItemCheck.OK;
-                          widget.onChangedOk();
-                          setState(() {});
-                        }),
-                    Text(
-                      'OK',
-                      style: CustomTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: CustomTheme.of(context).secondaryText,
-                            fontSize: 14,
-                          ),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                width: 12,
-              ),
-              SizedBox(
-                child: Row(
-                  children: [
-                    Radio(
-                        activeColor: Colors.amber,
-                        value: MeasuredItemCheck.CRITICAL,
-                        groupValue: value,
-                        onChanged: (v) {
-                          value = MeasuredItemCheck.CRITICAL;
-                          widget.onChangedCr();
-                          setState(() {});
-                        }),
-                    Text(
-                      'CR',
-                      style: CustomTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: CustomTheme.of(context).secondaryText,
-                            fontSize: 14,
-                          ),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                width: 12,
-              ),
-              SizedBox(
-                child: Row(
-                  children: [
-                    Radio(
-                        activeColor: Colors.red,
-                        value: MeasuredItemCheck.NOTGOOD,
-                        groupValue: value,
-                        onChanged: (v) {
-                          value = MeasuredItemCheck.NOTGOOD;
-                          widget.onChangedNg();
-                          setState(() {});
-                        }),
-                    Text(
-                      'NG',
-                      style: CustomTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: CustomTheme.of(context).secondaryText,
-                            fontSize: 14,
-                          ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          )),
     );
   }
 }

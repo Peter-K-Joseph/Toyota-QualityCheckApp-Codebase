@@ -5,6 +5,7 @@ import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/constants/styles.dart';
 import 'package:quality_system/controllers/auth_controller.dart';
+import 'package:quality_system/screens/system_screens/system_select_screen.dart';
 import 'package:quality_system/screens/variant_select_screen/variant_select_home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -168,14 +169,7 @@ class LoginScreen extends StatelessWidget {
                                             .fromSTEB(0, 70, 0, 0),
                                         child: CustomButtonWidget(
                                           onPressed: () {
-                                            // await Navigator.push(
-                                            //   context,
-                                            //   MaterialPageRoute(
-                                            //     builder: (context) =>
-                                            //         VariantselectWidget(),
-                                            //   ),
-                                            // );
-                                            Get.to(() => VariantSelectScreen());
+                                            Get.to(() => SystemChooseScreen());
                                           },
                                           text: 'LogIn',
                                           icon: Icon(

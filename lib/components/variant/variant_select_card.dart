@@ -7,9 +7,15 @@ import 'package:quality_system/screens/variant_select_screen/variant_associate_s
 
 class VariantSelectCard extends StatelessWidget {
   final String variant;
+  final String? details;
   final String image;
+  final String system;
   const VariantSelectCard(
-      {Key? key, required this.image, required this.variant})
+      {Key? key,
+      required this.image,
+      required this.variant,
+      this.details,
+      required this.system})
       : super(key: key);
 
   @override
@@ -25,6 +31,7 @@ class VariantSelectCard extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Get.to(() => VariantAssociateDetailScreen(
+                        system: system,
                         variant: EngineVariant.OneHalfLitre.getVariant,
                       ));
                 },
@@ -98,7 +105,7 @@ class VariantSelectCard extends StatelessWidget {
                                   ],
                                 ),
                                 const SizedBox(
-                                  height: 40,
+                                  height: 30,
                                 ),
                                 Text(
                                   'TNGA | Machining',
@@ -114,11 +121,11 @@ class VariantSelectCard extends StatelessWidget {
                                       ),
                                 ),
                                 const SizedBox(
-                                  height: 60,
+                                  height: 28,
                                 ),
                                 Text(
                                   variant,
-                                  textAlign: TextAlign.start,
+                                  textAlign: TextAlign.center,
                                   style:
                                       CustomTheme.of(context).title1.override(
                                             fontFamily: 'Poppins',
@@ -126,61 +133,22 @@ class VariantSelectCard extends StatelessWidget {
                                             fontSize: 50,
                                           ),
                                 ),
-                                // Column(
-                                //   mainAxisSize: MainAxisSize.min,
-                                //   mainAxisAlignment: MainAxisAlignment.end,
-                                //   crossAxisAlignment: CrossAxisAlignment.center,
-                                //   children: [
-                                //     Container(
-                                //       width: sysWidth * 0.28,
-                                //       height: sysHeight * 0.2,
-                                //       decoration: BoxDecoration(
-                                //         color: const Color(0xFFEEEEEE),
-                                //         boxShadow: const [
-                                //           BoxShadow(
-                                //             blurRadius: 3,
-                                //             color: Color(0x81000000),
-                                //             offset: Offset(3, 3),
-                                //             spreadRadius: 3,
-                                //           )
-                                //         ],
-                                //         borderRadius: BorderRadius.circular(50),
-                                //       ),
-                                //       child: CustomButtonWidget(
-                                //         onPressed: () {
-
-                                //         },
-                                //         text: 'Enter',
-                                //         icon: Icon(
-                                //           Icons.input_rounded,
-                                //           color: CustomTheme.of(context)
-                                //               .secondaryColor,
-                                //           size: 40,
-                                //         ),
-                                //         options: CustomButtonOptions(
-                                //           width: double.infinity,
-                                //           height: double.infinity,
-                                //           color: const Color(0xCC0D0D0E),
-                                //           textStyle: CustomTheme.of(context)
-                                //               .subtitle2
-                                //               .override(
-                                //                 fontFamily: 'Poppins',
-                                //                 color: CustomTheme.of(context)
-                                //                     .primaryBackground,
-                                //                 fontSize: 44,
-                                //               ),
-                                //           elevation: 7,
-                                //           borderSide: BorderSide(
-                                //             color: CustomTheme.of(context)
-                                //                 .secondaryColor,
-                                //             width: 3,
-                                //           ),
-                                //           borderRadius: BorderRadius.circular(50),
-                                //         ),
-                                //       ),
-                                //     ),
-                                //   ],
-                                // ),
+                                details != null
+                                    ? Text(
+                                        "( ${details!} )",
+                                        textAlign: TextAlign.center,
+                                        style: CustomTheme.of(context)
+                                            .title1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: const Color(0xFF262D34),
+                                              fontSize: 18,
+                                            ),
+                                      )
+                                    : const SizedBox(),
+                                const SizedBox(
+                                  height: 12,
+                                )
                               ],
                             ),
                           ),

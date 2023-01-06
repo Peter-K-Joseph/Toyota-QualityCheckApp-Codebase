@@ -5,7 +5,9 @@ import 'package:quality_system/components/variant/variant_select_card.dart';
 import 'package:quality_system/constants/enums.dart';
 
 class VariantSelectScreen extends StatelessWidget {
-  VariantSelectScreen({Key? key}) : super(key: key);
+  final String systemVariant;
+  VariantSelectScreen({Key? key, required this.systemVariant})
+      : super(key: key);
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -19,18 +21,50 @@ class VariantSelectScreen extends StatelessWidget {
           child: Stack(
             children: [
               const BackgroundSplashImage(),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  VariantSelectCard(
-                      image: 'images/variant_images/1.5.gif',
-                      variant: EngineVariant.OneHalfLitre.getVariant),
-                  VariantSelectCard(
-                      image: 'images/variant_images/2liter.png',
-                      variant: EngineVariant.TwoLitre.getVariant)
-                ],
-              ),
+              Builder(builder: (context) {
+                if (systemVariant == SystemVariant.HeadLine.getVariant) {
+                  return Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        child: VariantSelectCard(
+                            system: systemVariant,
+                            image: 'images/variant_images/1.5.gif',
+                            variant: EngineVariant.OneHalfLitre.getVariant),
+                      ),
+                      Expanded(
+                        child: VariantSelectCard(
+                            system: systemVariant,
+                            details: 'Conventional',
+                            image: 'images/variant_images/2liter.png',
+                            variant: EngineVariant.TwoLitre.getVariant),
+                      ),
+                      Expanded(
+                        child: VariantSelectCard(
+                            system: systemVariant,
+                            details: 'Hybrid',
+                            image: 'images/variant_images/2liter.png',
+                            variant: EngineVariant.TwoLitre.getVariant),
+                      )
+                    ],
+                  );
+                }
+                return Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    VariantSelectCard(
+                        system: systemVariant,
+                        image: 'images/variant_images/1.5.gif',
+                        variant: EngineVariant.OneHalfLitre.getVariant),
+                    VariantSelectCard(
+                        system: systemVariant,
+                        image: 'images/variant_images/2liter.png',
+                        variant: EngineVariant.TwoLitre.getVariant)
+                  ],
+                );
+              }),
             ],
           ),
         ),
