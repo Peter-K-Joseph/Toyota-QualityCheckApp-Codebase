@@ -2,6 +2,8 @@
 
 enum EngineVariant { TwoLitre, OneHalfLitre, NULL }
 
+enum CheckSheet { Regular, Unique, NULL }
+
 enum SystemVariant { HeadLine, CrankLine, BlockLine, NULL }
 
 enum Shift { White, Yellow, Blue, NULL }
@@ -15,6 +17,19 @@ extension EngineVariantExtension on EngineVariant {
         return '2 Litre';
       case EngineVariant.OneHalfLitre:
         return '1.5 Litre';
+      default:
+        return 'null';
+    }
+  }
+}
+
+extension CheckSheetExtension on CheckSheet {
+  String get getVariant {
+    switch (this) {
+      case CheckSheet.Regular:
+        return 'Regular';
+      case CheckSheet.Unique:
+        return 'Unique';
       default:
         return 'null';
     }

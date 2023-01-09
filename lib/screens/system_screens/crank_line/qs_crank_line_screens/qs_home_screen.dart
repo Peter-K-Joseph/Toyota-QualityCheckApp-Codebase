@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quality_system/components/background.dart';
+import 'package:quality_system/components/background_container.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/quality_station_choose_card.dart';
 import 'package:quality_system/screens/system_screens/crank_line/qs_crankline_forms_screens/qs_1_forms_screen.dart';
@@ -48,142 +48,135 @@ class QSCrankLineHomeScreen extends StatelessWidget {
         centerTitle: false,
         elevation: 0,
       ),
-      body: SafeArea(
+      body: BackgroundSplashContainer(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: Stack(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const BackgroundSplashImage(),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 12),
-                      child: GridView(
-                        padding: EdgeInsets.zero,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 50,
-                          mainAxisSpacing: 50,
-                          childAspectRatio: 2,
-                        ),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          QualityStationChooseCard(
-                            icon: Icons.filter_1,
-                            onPressed: () {
-                              Get.to(() => QS1CrankLineFormsScreen(
-                                    measurername: measurername,
-                                    partserialno: partserialno,
-                                    processname: processno,
-                                    shift: shift,
-                                    variant: variant,
-                                  ));
-                            },
-                            title: 'QC Station 1',
-                          ),
-                          QualityStationChooseCard(
-                            icon: Icons.filter_2,
-                            onPressed: () {
-                              Get.to(() => QS2CrankLineFormsScreen(
-                                    measurername: measurername,
-                                    partserialno: partserialno,
-                                    processname: processno,
-                                    shift: shift,
-                                    variant: variant,
-                                  ));
-                            },
-                            title: 'QC Station 2',
-                          ),
-                          QualityStationChooseCard(
-                            icon: Icons.filter_3,
-                            onPressed: () {
-                              Get.to(() => QS3CrankLineFormsScreen(
-                                    measurername: measurername,
-                                    partserialno: partserialno,
-                                    processname: processno,
-                                    shift: shift,
-                                    variant: variant,
-                                  ));
-                            },
-                            title: 'QC Station 3',
-                          ),
-                          QualityStationChooseCard(
-                            icon: Icons.filter_4,
-                            onPressed: () {
-                              Get.to(() => QS4CrankLineFormsScreen(
-                                    measurername: measurername,
-                                    partserialno: partserialno,
-                                    processname: processno,
-                                    shift: shift,
-                                    variant: variant,
-                                  ));
-                            },
-                            title: 'QC Station 4',
-                          ),
-                          QualityStationChooseCard(
-                            icon: Icons.filter_5,
-                            onPressed: () {
-                              Get.to(() => QS5CrankLineFormsScreen(
-                                    measurername: measurername,
-                                    partserialno: partserialno,
-                                    processname: processno,
-                                    shift: shift,
-                                    variant: variant,
-                                  ));
-                            },
-                            title: 'QC Station 5',
-                          ),
-                          QualityStationChooseCard(
-                            icon: Icons.filter_6,
-                            onPressed: () {
-                              Get.to(() => QS6CrankLineFormsScreen(
-                                    measurername: measurername,
-                                    partserialno: partserialno,
-                                    processname: processno,
-                                    shift: shift,
-                                    variant: variant,
-                                  ));
-                            },
-                            title: 'QC Station 6',
-                          ),
-                          QualityStationChooseCard(
-                            icon: Icons.filter_7,
-                            onPressed: () {
-                              Get.to(() => QS7CrankLineFormsScreen(
-                                    measurername: measurername,
-                                    partserialno: partserialno,
-                                    processname: processno,
-                                    shift: shift,
-                                    variant: variant,
-                                  ));
-                            },
-                            title: 'QC Station 7',
-                          ),
-                          QualityStationChooseCard(
-                            icon: Icons.filter_8,
-                            onPressed: () {
-                              Get.to(() => QS8CrankLineFormsScreen(
-                                    measurername: measurername,
-                                    partserialno: partserialno,
-                                    processname: processno,
-                                    shift: shift,
-                                    variant: variant,
-                                  ));
-                            },
-                            title: 'QC Station 8',
-                          ),
-                        ],
-                      ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  child: GridView(
+                    padding: EdgeInsets.zero,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 50,
+                      mainAxisSpacing: 50,
+                      childAspectRatio: 2,
                     ),
-                  ],
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      QualityStationChooseCard(
+                        icon: Icons.filter_1,
+                        onPressed: () {
+                          Get.to(() => QS1CrankLineFormsScreen(
+                                measurername: measurername,
+                                partserialno: partserialno,
+                                processname: processno,
+                                shift: shift,
+                                variant: variant,
+                              ));
+                        },
+                        title: 'QC Station 1',
+                      ),
+                      QualityStationChooseCard(
+                        icon: Icons.filter_2,
+                        onPressed: () {
+                          Get.to(() => QS2CrankLineFormsScreen(
+                                measurername: measurername,
+                                partserialno: partserialno,
+                                processname: processno,
+                                shift: shift,
+                                variant: variant,
+                              ));
+                        },
+                        title: 'QC Station 2',
+                      ),
+                      QualityStationChooseCard(
+                        icon: Icons.filter_3,
+                        onPressed: () {
+                          Get.to(() => QS3CrankLineFormsScreen(
+                                measurername: measurername,
+                                partserialno: partserialno,
+                                processname: processno,
+                                shift: shift,
+                                variant: variant,
+                              ));
+                        },
+                        title: 'QC Station 3',
+                      ),
+                      QualityStationChooseCard(
+                        icon: Icons.filter_4,
+                        onPressed: () {
+                          Get.to(() => QS4CrankLineFormsScreen(
+                                measurername: measurername,
+                                partserialno: partserialno,
+                                processname: processno,
+                                shift: shift,
+                                variant: variant,
+                              ));
+                        },
+                        title: 'QC Station 4',
+                      ),
+                      QualityStationChooseCard(
+                        icon: Icons.filter_5,
+                        onPressed: () {
+                          Get.to(() => QS5CrankLineFormsScreen(
+                                measurername: measurername,
+                                partserialno: partserialno,
+                                processname: processno,
+                                shift: shift,
+                                variant: variant,
+                              ));
+                        },
+                        title: 'QC Station 5',
+                      ),
+                      QualityStationChooseCard(
+                        icon: Icons.filter_6,
+                        onPressed: () {
+                          Get.to(() => QS6CrankLineFormsScreen(
+                                measurername: measurername,
+                                partserialno: partserialno,
+                                processname: processno,
+                                shift: shift,
+                                variant: variant,
+                              ));
+                        },
+                        title: 'QC Station 6',
+                      ),
+                      QualityStationChooseCard(
+                        icon: Icons.filter_7,
+                        onPressed: () {
+                          Get.to(() => QS7CrankLineFormsScreen(
+                                measurername: measurername,
+                                partserialno: partserialno,
+                                processname: processno,
+                                shift: shift,
+                                variant: variant,
+                              ));
+                        },
+                        title: 'QC Station 7',
+                      ),
+                      QualityStationChooseCard(
+                        icon: Icons.filter_8,
+                        onPressed: () {
+                          Get.to(() => QS8CrankLineFormsScreen(
+                                measurername: measurername,
+                                partserialno: partserialno,
+                                processname: processno,
+                                shift: shift,
+                                variant: variant,
+                              ));
+                        },
+                        title: 'QC Station 8',
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

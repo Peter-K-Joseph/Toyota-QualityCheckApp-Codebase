@@ -1,6 +1,7 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:quality_system/constants/size.dart';
 
 class CustomButtonOptions {
   const CustomButtonOptions({
@@ -70,7 +71,7 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
               height: 23,
               child: CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  widget.options.textStyle!.color ?? Colors.white,
+                  widget.options.textStyle?.color ?? Colors.white,
                 ),
               ),
             ),
@@ -111,7 +112,7 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
           if (states.contains(MaterialState.disabled)) {
             return widget.options.disabledTextColor;
           }
-          return widget.options.textStyle!.color;
+          return widget.options.textStyle?.color;
         },
       ),
       backgroundColor: MaterialStateProperty.resolveWith<Color?>(
@@ -136,8 +137,8 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
 
     if (widget.icon != null || widget.iconData != null) {
       return SizedBox(
-        height: widget.options.height,
-        width: widget.options.width,
+        height: widget.options.height ?? 50,
+        width: widget.options.width ?? sysWidth,
         child: ElevatedButton.icon(
           icon: Padding(
             padding: widget.options.iconPadding ?? EdgeInsets.zero,
@@ -146,7 +147,8 @@ class _CustomButtonWidgetState extends State<CustomButtonWidget> {
                   widget.iconData,
                   size: widget.options.iconSize,
                   color: widget.options.iconColor ??
-                      widget.options.textStyle!.color,
+                      widget.options.textStyle?.color ??
+                      Colors.white,
                 ),
           ),
           label: textWidget,

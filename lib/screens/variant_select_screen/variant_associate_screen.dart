@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quality_system/components/background.dart';
+import 'package:quality_system/components/background_container.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/inspection/inspection_detail_card.dart';
 import 'package:quality_system/constants/enums.dart';
@@ -37,82 +37,73 @@ class VariantAssociateDetailScreen extends StatelessWidget {
         ),
         elevation: 0,
       ),
-      body: SafeArea(
+      body: BackgroundSplashContainer(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: Stack(
-              children: [
-                const BackgroundSplashImage(),
-                SingleChildScrollView(
-                  child: Form(
-                    key: associateController.formKey,
-                    autovalidateMode: AutovalidateMode.always,
+          child: SingleChildScrollView(
+            child: Form(
+              key: associateController.formKey,
+              autovalidateMode: AutovalidateMode.always,
+              child: Column(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(20, 50, 20, 40),
                     child: Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              20, 50, 20, 40),
-                          child: Column(
-                            children: [
-                              InspectionDetailBox(
-                                title: 'Shift',
-                                boxType: InspectionDetailBoxType.Dropdown,
-                                options: [
-                                  Shift.Blue.getShift,
-                                  Shift.White.getShift,
-                                  Shift.Yellow.getShift
-                                ],
-                                onChanged: (val) {
-                                  associateController.shiftValue = val!;
-                                },
-                              ),
-                              const SizedBox(
-                                height: 32,
-                              ),
-                              InspectionDetailBox(
-                                title: 'Process Name',
-                                boxType: InspectionDetailBoxType.Dropdown,
-                                options: [
-                                  ProcessName.P1.getProcessName,
-                                  ProcessName.P2.getProcessName,
-                                  ProcessName.P3.getProcessName,
-                                  ProcessName.P4.getProcessName,
-                                  ProcessName.P5.getProcessName,
-                                  ProcessName.P6.getProcessName,
-                                ],
-                                onChanged: (val) {
-                                  associateController.processnameValue = val!;
-                                },
-                              ),
-                              const SizedBox(
-                                height: 32,
-                              ),
-                              InspectionDetailBox(
-                                title: 'Part Serial No.',
-                                boxType: InspectionDetailBoxType.Text,
-                                controller:
-                                    associateController.partserialnoController,
-                              ),
-                              const SizedBox(
-                                height: 32,
-                              ),
-                              InspectionDetailBox(
-                                title: 'Measurer\'s Name',
-                                boxType: InspectionDetailBoxType.Text,
-                                controller:
-                                    associateController.measurernameController,
-                              ),
-                            ],
-                          ),
+                        InspectionDetailBox(
+                          title: 'Shift',
+                          boxType: InspectionDetailBoxType.Dropdown,
+                          options: [
+                            Shift.Blue.getShift,
+                            Shift.White.getShift,
+                            Shift.Yellow.getShift
+                          ],
+                          onChanged: (val) {
+                            associateController.shiftValue = val!;
+                          },
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        InspectionDetailBox(
+                          title: 'Process Name',
+                          boxType: InspectionDetailBoxType.Dropdown,
+                          options: [
+                            ProcessName.P1.getProcessName,
+                            ProcessName.P2.getProcessName,
+                            ProcessName.P3.getProcessName,
+                            ProcessName.P4.getProcessName,
+                            ProcessName.P5.getProcessName,
+                            ProcessName.P6.getProcessName,
+                          ],
+                          onChanged: (val) {
+                            associateController.processnameValue = val!;
+                          },
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        InspectionDetailBox(
+                          title: 'Part Serial No.',
+                          boxType: InspectionDetailBoxType.Text,
+                          controller:
+                              associateController.partserialnoController,
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        InspectionDetailBox(
+                          title: 'Measurer\'s Name',
+                          boxType: InspectionDetailBoxType.Text,
+                          controller:
+                              associateController.measurernameController,
                         ),
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

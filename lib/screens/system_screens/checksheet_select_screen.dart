@@ -4,10 +4,11 @@ import 'package:quality_system/components/background_container.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/quality_station_choose_card.dart';
 import 'package:quality_system/constants/enums.dart';
-import 'package:quality_system/screens/system_screens/checksheet_select_screen.dart';
+import 'package:quality_system/screens/variant_select_screen/variant_select_home_screen.dart';
 
-class SystemChooseScreen extends StatelessWidget {
-  SystemChooseScreen({super.key});
+class CheckSheetChooseScreen extends StatelessWidget {
+  CheckSheetChooseScreen({super.key, required this.systemVariant});
+  final String systemVariant;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -19,7 +20,7 @@ class SystemChooseScreen extends StatelessWidget {
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Select System',
+          'Select Check Sheet',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: CustomTheme.of(context).secondaryText,
@@ -33,14 +34,13 @@ class SystemChooseScreen extends StatelessWidget {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 child: GridView(
-                  padding: EdgeInsets.zero,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 50,
@@ -53,27 +53,21 @@ class SystemChooseScreen extends StatelessWidget {
                     QualityStationChooseCard(
                       icon: Icons.filter_1,
                       onPressed: () {
-                        Get.to(() => CheckSheetChooseScreen(
-                              systemVariant: SystemVariant.HeadLine.getVariant,
+                        Get.to(() => VariantSelectScreen(
+                              checkSheet: CheckSheet.Regular.getVariant,
+                              systemVariant: systemVariant,
                             ));
                       },
-                      title: 'Head Line',
+                      title: 'Regular',
                     ),
                     QualityStationChooseCard(
                       icon: Icons.filter_2,
                       onPressed: () {
-                        Get.to(() => CheckSheetChooseScreen(
-                            systemVariant: SystemVariant.CrankLine.getVariant));
+                        Get.to(() => VariantSelectScreen(
+                            checkSheet: CheckSheet.Unique.getVariant,
+                            systemVariant: systemVariant));
                       },
-                      title: 'Crank Line',
-                    ),
-                    QualityStationChooseCard(
-                      icon: Icons.filter_3,
-                      onPressed: () {
-                        Get.to(() => CheckSheetChooseScreen(
-                            systemVariant: SystemVariant.BlockLine.getVariant));
-                      },
-                      title: 'Block Line',
+                      title: 'Unique',
                     ),
                   ],
                 ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-class BackgroundSplashImage extends StatelessWidget {
-  const BackgroundSplashImage({Key? key}) : super(key: key);
+class BackgroundSplashContainer extends StatelessWidget {
+  final Widget child;
+  final String? image;
+  const BackgroundSplashContainer({Key? key, required this.child, this.image})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +16,11 @@ class BackgroundSplashImage extends StatelessWidget {
         image: DecorationImage(
           fit: BoxFit.cover,
           image: Image.asset(
-            'images/variant_images/19366.jpg',
+            image ?? 'images/variant_images/19366.jpg',
           ).image,
         ),
       ),
+      child: child,
     );
   }
 }

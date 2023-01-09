@@ -71,3 +71,39 @@ class MeasuredItemFormField extends StatelessWidget {
     );
   }
 }
+
+class MeasuredItemTextWidget extends StatelessWidget {
+  const MeasuredItemTextWidget({Key? key, required this.text, this.width})
+      : super(key: key);
+
+  final String? text;
+  final double? width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Container(
+        width: width ?? sysWidth * 0.21,
+        height: sysHeight * 0.08,
+        decoration: BoxDecoration(
+          color: const Color(0xFFEEEEEE),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: CustomTheme.of(context).secondaryText,
+            width: 3,
+          ),
+        ),
+        child: Text(
+          text ?? '',
+          textAlign: TextAlign.start,
+          style: CustomTheme.of(context).bodyText1.override(
+                fontFamily: 'Poppins',
+                color: CustomTheme.of(context).secondaryText,
+                fontSize: 14,
+              ),
+        ),
+      ),
+    );
+  }
+}
