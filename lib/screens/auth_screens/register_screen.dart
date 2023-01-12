@@ -6,16 +6,14 @@ import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/constants/styles.dart';
 import 'package:quality_system/controllers/auth_controller.dart';
-import 'package:quality_system/screens/auth_screens/register_screen.dart';
-import 'package:quality_system/screens/system_screens/system_select_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatelessWidget {
+  RegisterScreen({Key? key}) : super(key: key);
   final AuthController authController = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: authController.scaffoldLoginKey,
+      key: authController.scaffoldRegisterKey,
       backgroundColor: CustomTheme.of(context).primaryBackground,
       body: BackgroundSplashContainer(
         image: 'images/login_images/5305323.jpg',
@@ -63,9 +61,63 @@ class LoginScreen extends StatelessWidget {
                                   width: sysWidth * 0.45,
                                   child: TextFormField(
                                     controller:
+                                        authController.reportglController,
+                                    obscureText: false,
+                                    decoration: authTextFieldStyle.copyWith(
+                                      hintText: 'Report Group Leader',
+                                      prefixIcon: const Icon(
+                                        Icons.security,
+                                        color: Colors.black,
+                                        size: 26,
+                                      ),
+                                    ),
+                                    style: CustomTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          color: Colors.black,
+                                          fontFamily: 'Poppins',
+                                          fontSize: 20,
+                                        ),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 40,
+                                ),
+                                SizedBox(
+                                  width: sysWidth * 0.45,
+                                  child: TextFormField(
+                                    controller:
                                         authController.userNameController,
                                     obscureText: false,
                                     decoration: authTextFieldStyle,
+                                    style: CustomTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          color: Colors.black,
+                                          fontFamily: 'Poppins',
+                                          fontSize: 20,
+                                        ),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 40,
+                                ),
+                                SizedBox(
+                                  width: sysWidth * 0.45,
+                                  child: TextFormField(
+                                    controller:
+                                        authController.employeeController,
+                                    obscureText: false,
+                                    decoration: authTextFieldStyle.copyWith(
+                                      hintText: 'Employee ID',
+                                      prefixIcon: const Icon(
+                                        Icons.security,
+                                        color: Colors.black,
+                                        size: 26,
+                                      ),
+                                    ),
                                     style: CustomTheme.of(context)
                                         .bodyText1
                                         .override(
@@ -129,74 +181,32 @@ class LoginScreen extends StatelessWidget {
                           const SizedBox(
                             height: 60,
                           ),
-                          Row(
-                            children: [
-                              CustomButtonWidget(
-                                onPressed: () {
-                                  Get.to(() => SystemChooseScreen());
-                                },
-                                text: 'Log In',
-                                icon: Icon(
-                                  Icons.login,
-                                  color: CustomTheme.of(context).primaryBtnText,
-                                  size: 30,
-                                ),
-                                options: CustomButtonOptions(
-                                  width: 170,
-                                  height: 60,
-                                  color: Colors.black,
-                                  textStyle: CustomTheme.of(context)
-                                      .subtitle1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color:
-                                            CustomTheme.of(context).lineColor,
-                                        fontSize: 28,
-                                      ),
-                                  elevation: 10,
-                                  borderSide: BorderSide(
-                                    color:
-                                        CustomTheme.of(context).secondaryColor,
-                                    width: 4,
+                          CustomButtonWidget(
+                            onPressed: () {},
+                            text: 'Register',
+                            icon: Icon(
+                              Icons.login,
+                              color: CustomTheme.of(context).primaryBtnText,
+                              size: 30,
+                            ),
+                            options: CustomButtonOptions(
+                              width: 170,
+                              height: 60,
+                              color: Colors.black,
+                              textStyle: CustomTheme.of(context)
+                                  .subtitle1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: CustomTheme.of(context).lineColor,
+                                    fontSize: 28,
                                   ),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
+                              elevation: 10,
+                              borderSide: BorderSide(
+                                color: CustomTheme.of(context).secondaryColor,
+                                width: 4,
                               ),
-                              const SizedBox(
-                                width: 50,
-                              ),
-                              CustomButtonWidget(
-                                onPressed: () {
-                                  Get.to(() => RegisterScreen());
-                                },
-                                text: 'Register',
-                                icon: Icon(
-                                  Icons.login,
-                                  color: CustomTheme.of(context).primaryBtnText,
-                                  size: 30,
-                                ),
-                                options: CustomButtonOptions(
-                                  width: 170,
-                                  height: 60,
-                                  color: Colors.black,
-                                  textStyle: CustomTheme.of(context)
-                                      .subtitle1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color:
-                                            CustomTheme.of(context).lineColor,
-                                        fontSize: 28,
-                                      ),
-                                  elevation: 10,
-                                  borderSide: BorderSide(
-                                    color:
-                                        CustomTheme.of(context).secondaryColor,
-                                    width: 4,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                              ),
-                            ],
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                           ),
                         ],
                       ),
