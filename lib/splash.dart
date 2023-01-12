@@ -18,21 +18,17 @@ class SplashScreen extends StatelessWidget {
       body: FutureBuilder(
         future: splashLoader(),
         builder: (context, snapshot) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
+          return Stack(
             children: [
               Image.asset(
                 'images/login_images/QC_check-logos.jpeg',
                 fit: BoxFit.fill,
-                height: sysHeight / 2,
+                height: sysHeight,
                 width: sysWidth,
               ),
-              const SizedBox(
-                height: 50,
-              ),
-              const SpinKitRotatingCircle(
-                color: Colors.blue,
-                size: 50.0,
+              const Align(
+                alignment: Alignment.bottomCenter,
+                child: SpinKitRotatingCircle(color: Colors.white),
               )
             ],
           );

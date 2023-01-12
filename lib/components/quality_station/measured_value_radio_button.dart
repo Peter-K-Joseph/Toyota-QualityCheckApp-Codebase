@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
+import 'package:quality_system/constants/callbacks.dart';
 import 'package:quality_system/constants/enums.dart';
 import 'package:quality_system/constants/size.dart';
 
 class MeasuredItemRadioButtonField extends StatefulWidget {
-  const MeasuredItemRadioButtonField(
-      {Key? key,
-      required this.onChangedNg,
-      required this.onChangedCr,
-      required this.onChangedOk})
+  const MeasuredItemRadioButtonField({Key? key, required this.value})
       : super(key: key);
 
-  final void Function() onChangedOk;
-  final void Function() onChangedCr;
-  final void Function() onChangedNg;
+  final StringCallback value;
 
   @override
   State<MeasuredItemRadioButtonField> createState() =>
@@ -53,7 +48,7 @@ class _MeasuredItemRadioButtonFieldState
                         groupValue: value,
                         onChanged: (v) {
                           value = MeasuredItemCheck.OK;
-                          widget.onChangedOk();
+                          widget.value(MeasuredItemCheck.OK.getCheck);
                           setState(() {});
                         }),
                     Text(
@@ -79,7 +74,8 @@ class _MeasuredItemRadioButtonFieldState
                         groupValue: value,
                         onChanged: (v) {
                           value = MeasuredItemCheck.CRITICAL;
-                          widget.onChangedCr();
+                          widget.value(MeasuredItemCheck.CRITICAL.getCheck);
+
                           setState(() {});
                         }),
                     Text(
@@ -105,7 +101,8 @@ class _MeasuredItemRadioButtonFieldState
                         groupValue: value,
                         onChanged: (v) {
                           value = MeasuredItemCheck.NOTGOOD;
-                          widget.onChangedNg();
+                          widget.value(MeasuredItemCheck.NOTGOOD.getCheck);
+
                           setState(() {});
                         }),
                     Text(

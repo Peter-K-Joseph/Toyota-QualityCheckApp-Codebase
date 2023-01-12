@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quality_system/backend/api_requests/api_calls.dart';
-import 'package:quality_system/components/backend/api_request.dart';
+
 import 'package:quality_system/components/background_container.dart';
 import 'package:quality_system/components/custom_button_component.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
-import 'package:quality_system/components/loading.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/components/quality_station/measured_value_form_field.dart';
 import 'package:quality_system/constants/size.dart';
@@ -178,129 +176,68 @@ class QCBlockLineSummaryScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Flexible(
-                        fit: FlexFit.tight,
-                        flex: 1,
-                        child: FutureBuilder<ApiCallResponse>(
-                          future: QcOneLimitDataCall.call(),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return const LoadingWidget();
-                            }
-                            final slnoQcOneLimitDataResponse = snapshot.data!;
-                            return Builder(
-                              builder: (context) {
-                                final qc12lqcsparameterno =
-                                    QcOneLimitDataCall.qc12lqcsparameterno(
-                                  slnoQcOneLimitDataResponse.jsonBody,
-                                ).toList();
-                                return Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children:
-                                      List.generate(qc12lqcsparameterno.length,
-                                          (qc12lqcsparameternoIndex) {
-                                    final qc12lqcsparameternoItem =
-                                        qc12lqcsparameterno[
-                                            qc12lqcsparameternoIndex];
-                                    return Container(
-                                      width: sysWidth * 0.04,
-                                      height: sysHeight * 0.08,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFEEEEEE),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                          color: CustomTheme.of(context)
-                                              .secondaryText,
-                                          width: 3,
-                                        ),
-                                      ),
-                                      child: Text(
-                                        getJsonField(
-                                          qc12lqcsparameternoItem,
-                                          r'''$''',
-                                        ).toString(),
-                                        textAlign: TextAlign.center,
-                                        style: CustomTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: CustomTheme.of(context)
-                                                  .secondaryText,
-                                            ),
-                                      ),
-                                    );
-                                  }),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                      Flexible(
-                        fit: FlexFit.tight,
-                        flex: 3,
-                        child: FutureBuilder<ApiCallResponse>(
-                          future: QcOneLimitDataCall.call(),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return const LoadingWidget();
-                            }
-                            final measureditemQcOneLimitDataResponse =
-                                snapshot.data!;
-                            return Builder(
-                              builder: (context) {
-                                final qc12lmeasureditem =
-                                    QcOneLimitDataCall.qc12lmeasureditem(
-                                  measureditemQcOneLimitDataResponse.jsonBody,
-                                ).toList();
-                                return Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children:
-                                      List.generate(qc12lmeasureditem.length,
-                                          (qc12lmeasureditemIndex) {
-                                    final qc12lmeasureditemItem =
-                                        qc12lmeasureditem[
-                                            qc12lmeasureditemIndex];
-                                    return Container(
-                                      width: sysWidth * 0.2,
-                                      height: sysHeight * 0.08,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFEEEEEE),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                          color: CustomTheme.of(context)
-                                              .secondaryText,
-                                          width: 3,
-                                        ),
-                                      ),
-                                      child: Text(
-                                        getJsonField(
-                                          qc12lmeasureditemItem,
-                                          r'''$''',
-                                        ).toString(),
-                                        textAlign: TextAlign.center,
-                                        style: CustomTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: CustomTheme.of(context)
-                                                  .secondaryText,
-                                            ),
-                                      ),
-                                    );
-                                  }),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ),
+                      // Flexible(
+                      //   fit: FlexFit.tight,
+                      //   flex: 3,
+                      //   child: FutureBuilder<ApiCallResponse>(
+                      //     future: QcOneLimitDataCall.call(),
+                      //     builder: (context, snapshot) {
+                      //       // Customize what your widget looks like when it's loading.
+                      //       if (!snapshot.hasData) {
+                      //         return const LoadingWidget();
+                      //       }
+                      //       final measureditemQcOneLimitDataResponse =
+                      //           snapshot.data!;
+                      //       return Builder(
+                      //         builder: (context) {
+                      //           final qc12lmeasureditem =
+                      //               QcOneLimitDataCall.qc12lmeasureditem(
+                      //             measureditemQcOneLimitDataResponse.jsonBody,
+                      //           ).toList();
+                      //           return Column(
+                      //             mainAxisSize: MainAxisSize.max,
+                      //             mainAxisAlignment:
+                      //                 MainAxisAlignment.spaceEvenly,
+                      //             children:
+                      //                 List.generate(qc12lmeasureditem.length,
+                      //                     (qc12lmeasureditemIndex) {
+                      //               final qc12lmeasureditemItem =
+                      //                   qc12lmeasureditem[
+                      //                       qc12lmeasureditemIndex];
+                      //               return Container(
+                      //                 width: sysWidth * 0.2,
+                      //                 height: sysHeight * 0.08,
+                      //                 decoration: BoxDecoration(
+                      //                   color: const Color(0xFFEEEEEE),
+                      //                   borderRadius: BorderRadius.circular(10),
+                      //                   border: Border.all(
+                      //                     color: CustomTheme.of(context)
+                      //                         .secondaryText,
+                      //                     width: 3,
+                      //                   ),
+                      //                 ),
+                      //                 child: Text(
+                      //                   getJsonField(
+                      //                     qc12lmeasureditemItem,
+                      //                     r'''$''',
+                      //                   ).toString(),
+                      //                   textAlign: TextAlign.center,
+                      //                   style: CustomTheme.of(context)
+                      //                       .bodyText1
+                      //                       .override(
+                      //                         fontFamily: 'Poppins',
+                      //                         color: CustomTheme.of(context)
+                      //                             .secondaryText,
+                      //                       ),
+                      //                 ),
+                      //               );
+                      //             }),
+                      //           );
+                      //         },
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
                       Flexible(
                         fit: FlexFit.tight,
                         flex: 4,
