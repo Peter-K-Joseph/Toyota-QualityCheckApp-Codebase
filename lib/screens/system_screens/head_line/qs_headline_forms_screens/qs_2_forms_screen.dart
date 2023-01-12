@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:quality_system/components/custom_theme_component.dart';
+import 'package:quality_system/components/quality_station/detail_tile_widget.dart';
 import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
 import 'package:quality_system/components/quality_station/summary_button.dart';
 import 'package:quality_system/constants/size.dart';
-import 'package:quality_system/controllers/quality_station_forms_controller.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
+import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_2_controller.dart';
 
 class QS2HeadLineFormsScreen extends StatelessWidget {
   QS2HeadLineFormsScreen({
@@ -24,12 +25,11 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
 
-  final controller = Get.put(QualityStationFormsController());
+  final controller = Get.find<HeadLineQC2Controller>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: controller.scaffoldKey,
       appBar: AppBar(
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
@@ -134,13 +134,69 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const SizedBox(),
-                    Form(
-                      key: controller.formKey,
-                      autovalidateMode: AutovalidateMode.always,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [MeasuredItemRadioButtonField(value: (v) {})],
+                    SizedBox(
+                      width: sysWidth - sysWidth / 4,
+                      child: Obx(() {
+                        if (controller.loading.value) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: controller.values.length,
+                            itemBuilder: (ctx, i) {
+                              return Row(
+                                children: [
+                                  DetailTileWidget(
+                                      width: 63,
+                                      value: controller.values[i].parameterNo
+                                          .toString()),
+                                  Expanded(
+                                    child: DetailTileWidget(
+                                        value: 'Class'.toString()),
+                                  ),
+                                  Expanded(
+                                    child: DetailTileWidget(
+                                        value: controller.values[i].measuredItem
+                                            .toString()),
+                                  ),
+                                  DetailTileWidget(
+                                      width: 90,
+                                      value: controller
+                                          .values[i].noOfPosition15L
+                                          .toString()),
+                                  DetailTileWidget(
+                                      width: 90,
+                                      value: controller
+                                          .values[i].noOfPosition20L
+                                          .toString()),
+                                  Expanded(
+                                    child: DetailTileWidget(
+                                        value: controller.values[i].gaugeNo
+                                            .toString()),
+                                  ),
+                                  Expanded(
+                                    child: DetailTileWidget(
+                                        value: controller.values[i].actionPoint
+                                            .toString()),
+                                  )
+                                ],
+                              );
+                            });
+                      }),
+                    ),
+                    SizedBox(
+                      width: sysWidth / 4,
+                      child: Form(
+                        autovalidateMode: AutovalidateMode.always,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            MeasuredItemRadioButtonField(value: (v) {})
+                          ],
+                        ),
                       ),
                     ),
                   ],

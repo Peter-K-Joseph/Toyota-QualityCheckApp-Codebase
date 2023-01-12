@@ -20,10 +20,11 @@ class HeadLineQC1Controller extends GetxController {
       for (var element in data) {
         values.add(HeadLineQC1.fromJson(element));
       }
+      loading(false);
     } catch (e) {
       print(e);
+      loading(false);
     }
-    loading(false);
   }
 
   @override
