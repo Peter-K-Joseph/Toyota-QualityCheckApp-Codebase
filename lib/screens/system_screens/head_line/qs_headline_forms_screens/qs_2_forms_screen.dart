@@ -8,22 +8,27 @@ import 'package:quality_system/components/quality_station/summary_button.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_2_controller.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_head_line_screens/qs_summary_screens/qs_2_summary_screen.dart';
 
 class QS2HeadLineFormsScreen extends StatelessWidget {
-  QS2HeadLineFormsScreen({
-    Key? key,
-    required this.variant,
-    required this.shift,
-    required this.processname,
-    required this.partserialno,
-    required this.measurername,
-  }) : super(key: key);
+  QS2HeadLineFormsScreen(
+      {Key? key,
+      required this.variant,
+      required this.shift,
+      required this.processname,
+      required this.partserialno,
+      required this.measurername,
+      required this.checkSheet,
+      this.details})
+      : super(key: key);
 
   final String variant;
   final String shift;
   final String processname;
   final String partserialno;
   final String measurername;
+  final String checkSheet;
+  final String? details;
 
   final controller = Get.find<HeadLineQC2Controller>();
 
@@ -69,6 +74,7 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
                         child: HeaderTitleWidget(
                       title: 'Variant :',
                       subtitle: variant,
+                      details: details,
                     )),
                     Expanded(
                       child: HeaderTitleWidget(
@@ -107,6 +113,35 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
                             title: 'Measured Items',
                             color: Color(0xFF39D2C0)),
                       ),
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const BlockFormHeaderComponent(
+                                width: 200,
+                                height: 60,
+                                title: 'No. of Positions',
+                                color: Color(0xFF39D2C0)),
+                            Row(
+                              children: const [
+                                Expanded(
+                                  child: BlockFormHeaderComponent(
+                                      height: 60,
+                                      title: '1.5 L',
+                                      color: Color(0xFF39D2C0)),
+                                ),
+                                Expanded(
+                                  child: BlockFormHeaderComponent(
+                                      height: 60,
+                                      title: '2 L',
+                                      color: Color(0xFF39D2C0)),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
                       const Expanded(
                         flex: 1,
                         child: BlockFormHeaderComponent(
@@ -138,9 +173,7 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
                       width: sysWidth - sysWidth / 4,
                       child: Obx(() {
                         if (controller.loading.value) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
+                          return const LinearProgressIndicator();
                         }
                         return ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
@@ -190,11 +223,14 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
                     SizedBox(
                       width: sysWidth / 4,
                       child: Form(
+                        key: controller.formKey,
                         autovalidateMode: AutovalidateMode.always,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            MeasuredItemRadioButtonField(value: (v) {})
+                            MeasuredItemRadioButtonField(callbackvalue: (v) {
+                              controller.pm1 = v;
+                            })
                           ],
                         ),
                       ),
@@ -206,7 +242,23 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: SummaryButton(onPressed: () {}),
+      bottomNavigationBar: SummaryButton(onPressed: () async {
+        if (!controller.formKey.currentState!.validate()) {
+          Get.rawSnackbar(message: 'Please fill all the fileds');
+        } else {
+          Get.defaultDialog(
+              title: 'Loading', content: const CircularProgressIndicator());
+          await Future.delayed(const Duration(milliseconds: 1500), () {
+            Get.offAll(() => QS2HeadLineSummaryScreen(
+                variant: variant,
+                shift: shift,
+                processname: processname,
+                partserialno: partserialno,
+                measurername: measurername,
+                checkSheet: checkSheet));
+          });
+        }
+      }),
     );
   }
 }

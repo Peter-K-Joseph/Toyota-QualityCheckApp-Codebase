@@ -28,6 +28,7 @@ dependencies:
   from_css_color: ^2.0.0
   timeago: ^3.3.0
   page_transition: ^2.0.9
+  show_more_text_popup: ^0.3.0
 
   json_path: ^0.4.2
 

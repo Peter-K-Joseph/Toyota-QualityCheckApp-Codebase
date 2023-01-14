@@ -3,9 +3,12 @@ import 'package:get/get.dart';
 import 'package:quality_system/components/background_container.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/quality_station_choose_card.dart';
+import 'package:quality_system/constants/enums.dart';
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_1_forms_screen.dart';
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_2_forms_screen.dart';
-import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_3_forms_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_3_healdine_forms/qs_3_1.5l_forms_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_3_healdine_forms/qs_3_2lC_forms_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_3_healdine_forms/qs_3_2lH_forms_screen.dart';
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_4_forms_screen.dart';
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_5_forms_screen.dart';
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_6_forms_screen.dart';
@@ -13,22 +16,24 @@ import 'package:quality_system/screens/system_screens/head_line/qs_headline_form
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_8_froms_screen.dart';
 
 class QSHeadLineHomeScreen extends StatelessWidget {
-  QSHeadLineHomeScreen({
-    Key? key,
-    required this.measurername,
-    required this.variant,
-    required this.shift,
-    required this.details,
-    required this.processno,
-    required this.partserialno,
-  }) : super(key: key);
+  QSHeadLineHomeScreen(
+      {Key? key,
+      required this.measurername,
+      required this.variant,
+      required this.shift,
+      this.details,
+      required this.processno,
+      required this.partserialno,
+      required this.checkSheet})
+      : super(key: key);
 
   final String measurername;
   final String variant;
-  final String details;
+  final String? details;
   final String shift;
   final String processno;
   final String partserialno;
+  final String checkSheet;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -82,6 +87,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                 processname: processno,
                                 shift: shift,
                                 variant: variant,
+                                checkSheet: checkSheet,
+                                details: details,
                               ));
                         },
                         title: 'QC Station 1',
@@ -95,6 +102,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                 processname: processno,
                                 shift: shift,
                                 variant: variant,
+                                checkSheet: checkSheet,
+                                details: details,
                               ));
                         },
                         title: 'QC Station 2',
@@ -102,13 +111,39 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                       QualityStationChooseCard(
                         icon: Icons.filter_3,
                         onPressed: () {
-                          Get.to(() => QS3HeadLineFormsScreen(
-                                measurername: measurername,
-                                partserialno: partserialno,
-                                processname: processno,
-                                shift: shift,
-                                variant: variant,
-                              ));
+                          if (variant == EngineVariant.TwoLitre.getVariant &&
+                              details == 'Conventional') {
+                            Get.to(
+                                () => QS3HeadLine2LitreConventionalFormsScreen(
+                                      measurername: measurername,
+                                      partserialno: partserialno,
+                                      processname: processno,
+                                      shift: shift,
+                                      variant: variant,
+                                      checkSheet: checkSheet,
+                                    ));
+                          } else if (variant ==
+                                  EngineVariant.TwoLitre.getVariant &&
+                              details == 'Hybrid') {
+                            Get.to(() => QS3HeadLine2LitreHybridFormsScreen(
+                                  measurername: measurername,
+                                  partserialno: partserialno,
+                                  processname: processno,
+                                  shift: shift,
+                                  variant: variant,
+                                  checkSheet: checkSheet,
+                                ));
+                          } else if (variant ==
+                              EngineVariant.OneHalfLitre.getVariant) {
+                            Get.to(() => QS3HeadLine1Point5FormsScreen(
+                                  measurername: measurername,
+                                  partserialno: partserialno,
+                                  processname: processno,
+                                  shift: shift,
+                                  variant: variant,
+                                  checkSheet: checkSheet,
+                                ));
+                          }
                         },
                         title: 'QC Station 3',
                       ),

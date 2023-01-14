@@ -370,21 +370,6 @@ class QS2BlockLineFormsScreen extends StatelessWidget {
                       color: CustomTheme.of(context).secondaryText,
                       size: 15,
                     ),
-                    options: CustomButtonOptions(
-                      width: 250,
-                      height: 70,
-                      color: CustomTheme.of(context).primaryColor,
-                      textStyle: CustomTheme.of(context).subtitle2.override(
-                            fontFamily: 'Poppins',
-                            color: CustomTheme.of(context).secondaryText,
-                            fontSize: 24,
-                          ),
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
                   ),
                 ),
               ],

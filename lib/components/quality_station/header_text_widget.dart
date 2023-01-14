@@ -4,17 +4,18 @@ import 'package:quality_system/constants/size.dart';
 
 class HeaderTitleWidget extends StatelessWidget {
   const HeaderTitleWidget(
-      {Key? key, required this.title, required this.subtitle})
+      {Key? key, required this.title, required this.subtitle, this.details})
       : super(key: key);
 
   final String title;
   final String subtitle;
+  final String? details;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: sysHeight * 0.1,
+      height: sysHeight * 0.11,
       decoration: const BoxDecoration(
         color: Color(0x00EEEEEE),
       ),
@@ -37,6 +38,7 @@ class HeaderTitleWidget extends StatelessWidget {
                   fontSize: 24,
                   color: Colors.grey,
                   fontWeight: FontWeight.w700)),
+          details != null ? Text('( $details )') : const SizedBox()
         ],
       ),
     );

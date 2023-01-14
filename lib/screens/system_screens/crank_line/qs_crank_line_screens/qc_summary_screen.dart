@@ -306,72 +306,70 @@ class QCCrankLineSummaryScreen extends StatelessWidget {
                   height: 70,
                   width: sysWidth,
                   child: CustomButtonWidget(
-                    onPressed: () async {
-                      // await TclqcOneTwoCall.call(
-                      //   measurerName: measurername1,
-                      //   shift: shift,
-                      //   modelName: variant,
-                      //   processName: processname,
-                      //   partSerialName: partserialno,
-                      //   serialNumberMarkingCondition: mv00,
-                      //   machiningSurface: mv01,
-                      //   circularityFrRrCenterHole: mv02?.toString(),
-                      //   positionFrCenterDatumHole: mv03?.toString(),
-                      //   positionRrCenterDatumHole: mv04?.toString(),
-                      //   diaFrAxis1: mv0501?.toString(),
-                      //   diaFrAxis2: mv0502?.toString(),
-                      //   diaFrAxis3: mv0503?.toString(),
-                      //   diaFrAxisGroove: mv06?.toString(),
-                      //   j5ReliefGrooveDia: mv07?.toString(),
-                      //   rearFlangeWidth: mv08?.toString(),
-                      //   flyWheelSeatingGrooveOd: mv09?.toString(),
-                      //   flyWheelSeatingOd: mv10?.toString(),
-                      //   j1EndFacePosition20l: mv11?.toString(),
-                      //   j1RrEndFacePosition20: mv12?.toString(),
-                      //   j1Od: mv13?.toString(),
-                      //   rearFlaneDia: mv14?.toString(),
-                      //   datumReferencePlanePositionK5: mv15?.toString(),
-                      //   frontFaceCenterHoleDatumDiaToPartDatumDistance:
-                      //       mv16?.toString(),
-                      //   rearFaceCenterHoleDatumDiaToPartDatumDistance:
-                      //       mv17?.toString(),
-                      //   frEndFaceToFwFittingFaceLength: mv18?.toString(),
-                      //   frontShaftRunoutK31: mv1901?.toString(),
-                      //   frontShaftRunoutK32: mv1902?.toString(),
-                      //   frontShaftRunoutK33: mv1903?.toString(),
-                      //   journal1OuterDiameterRunoutK3: mv20?.toString(),
-                      //   rrAxisRunoutK3: mv21?.toString(),
-                      //   rrFlangeOuterDiameterRunoutK4: mv22?.toString(),
-                      //   rearFlangeFaceRunoutK6: mv23?.toString(),
-                      //   j5OdRunoutK2: mv24?.toString(),
-                      //   remarksqc120l: mvremark,
-                      // );
-                      await showDialog(
-                        context: context,
-                        builder: (alertDialogContext) {
-                          return AlertDialog(
-                            title: const Text('Success!'),
-                            content: const Text('Data Posted'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                      Get.offAll(() => SystemChooseScreen());
-                    },
-                    text: 'POST',
-                    icon: Icon(
-                      Icons.local_post_office,
-                      color: CustomTheme.of(context).secondaryText,
-                      size: 30,
-                    ),
-                    options: const CustomButtonOptions(),
-                  ),
+                      onPressed: () async {
+                        // await TclqcOneTwoCall.call(
+                        //   measurerName: measurername1,
+                        //   shift: shift,
+                        //   modelName: variant,
+                        //   processName: processname,
+                        //   partSerialName: partserialno,
+                        //   serialNumberMarkingCondition: mv00,
+                        //   machiningSurface: mv01,
+                        //   circularityFrRrCenterHole: mv02?.toString(),
+                        //   positionFrCenterDatumHole: mv03?.toString(),
+                        //   positionRrCenterDatumHole: mv04?.toString(),
+                        //   diaFrAxis1: mv0501?.toString(),
+                        //   diaFrAxis2: mv0502?.toString(),
+                        //   diaFrAxis3: mv0503?.toString(),
+                        //   diaFrAxisGroove: mv06?.toString(),
+                        //   j5ReliefGrooveDia: mv07?.toString(),
+                        //   rearFlangeWidth: mv08?.toString(),
+                        //   flyWheelSeatingGrooveOd: mv09?.toString(),
+                        //   flyWheelSeatingOd: mv10?.toString(),
+                        //   j1EndFacePosition20l: mv11?.toString(),
+                        //   j1RrEndFacePosition20: mv12?.toString(),
+                        //   j1Od: mv13?.toString(),
+                        //   rearFlaneDia: mv14?.toString(),
+                        //   datumReferencePlanePositionK5: mv15?.toString(),
+                        //   frontFaceCenterHoleDatumDiaToPartDatumDistance:
+                        //       mv16?.toString(),
+                        //   rearFaceCenterHoleDatumDiaToPartDatumDistance:
+                        //       mv17?.toString(),
+                        //   frEndFaceToFwFittingFaceLength: mv18?.toString(),
+                        //   frontShaftRunoutK31: mv1901?.toString(),
+                        //   frontShaftRunoutK32: mv1902?.toString(),
+                        //   frontShaftRunoutK33: mv1903?.toString(),
+                        //   journal1OuterDiameterRunoutK3: mv20?.toString(),
+                        //   rrAxisRunoutK3: mv21?.toString(),
+                        //   rrFlangeOuterDiameterRunoutK4: mv22?.toString(),
+                        //   rearFlangeFaceRunoutK6: mv23?.toString(),
+                        //   j5OdRunoutK2: mv24?.toString(),
+                        //   remarksqc120l: mvremark,
+                        // );
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: const Text('Success!'),
+                              content: const Text('Data Posted'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: const Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                        Get.offAll(() => SystemChooseScreen());
+                      },
+                      text: 'POST',
+                      icon: Icon(
+                        Icons.local_post_office,
+                        color: CustomTheme.of(context).secondaryText,
+                        size: 30,
+                      )),
                 ),
               ],
             ),

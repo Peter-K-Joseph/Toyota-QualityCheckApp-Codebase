@@ -20,22 +20,41 @@ class DetailTileWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Container(
-        width: width ?? sysWidth / 4,
-        height: height ?? sysHeight * 0.1,
-        decoration: BoxDecoration(
-          color: const Color(0xFFEEEEEE),
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: CustomTheme.of(context).secondaryText,
-            width: 3,
+          width: width ?? sysWidth / 4,
+          height: height ?? sysHeight * 0.1,
+          decoration: BoxDecoration(
+            color: const Color(0xFFEEEEEE),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: CustomTheme.of(context).secondaryText,
+              width: 3,
+            ),
           ),
-        ),
-        child: Center(
-            child: Text(
-          value,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
-        )),
-      ),
+          child: value.length < 25
+              ? Center(
+                  child: Text(
+                    value,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w800),
+                  ),
+                )
+              : Center(
+                  child: Tooltip(
+                    height: 100,
+                    textAlign: TextAlign.center,
+                    triggerMode: TooltipTriggerMode.manual,
+                    message: value,
+                    child: Text(
+                      value,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w800),
+                    ),
+                  ),
+                )),
     );
   }
 }

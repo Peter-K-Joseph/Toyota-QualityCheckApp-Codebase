@@ -15,7 +15,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: authController.scaffoldLoginKey,
       backgroundColor: CustomTheme.of(context).primaryBackground,
       body: BackgroundSplashContainer(
         image: 'images/login_images/5305323.jpg',
@@ -130,9 +129,12 @@ class LoginScreen extends StatelessWidget {
                             height: 60,
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CustomButtonWidget(
+                                width: 200,
                                 onPressed: () {
+                                  // authController.loginUser();
                                   Get.to(() => SystemChooseScreen());
                                 },
                                 text: 'Log In',
@@ -141,59 +143,22 @@ class LoginScreen extends StatelessWidget {
                                   color: CustomTheme.of(context).primaryBtnText,
                                   size: 30,
                                 ),
-                                options: CustomButtonOptions(
-                                  width: 170,
-                                  height: 60,
-                                  color: Colors.black,
-                                  textStyle: CustomTheme.of(context)
-                                      .subtitle1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color:
-                                            CustomTheme.of(context).lineColor,
-                                        fontSize: 28,
-                                      ),
-                                  elevation: 10,
-                                  borderSide: BorderSide(
-                                    color:
-                                        CustomTheme.of(context).secondaryColor,
-                                    width: 4,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
                               ),
                               const SizedBox(
                                 width: 50,
                               ),
                               CustomButtonWidget(
+                                width: 200,
                                 onPressed: () {
-                                  Get.to(() => RegisterScreen());
+                                  Get.to(() => RegisterScreen(
+                                        key: key,
+                                      ));
                                 },
                                 text: 'Register',
                                 icon: Icon(
                                   Icons.login,
                                   color: CustomTheme.of(context).primaryBtnText,
                                   size: 30,
-                                ),
-                                options: CustomButtonOptions(
-                                  width: 170,
-                                  height: 60,
-                                  color: Colors.black,
-                                  textStyle: CustomTheme.of(context)
-                                      .subtitle1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color:
-                                            CustomTheme.of(context).lineColor,
-                                        fontSize: 28,
-                                      ),
-                                  elevation: 10,
-                                  borderSide: BorderSide(
-                                    color:
-                                        CustomTheme.of(context).secondaryColor,
-                                    width: 4,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
                             ],

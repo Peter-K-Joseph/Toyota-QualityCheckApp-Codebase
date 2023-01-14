@@ -1,4 +1,4 @@
-class HeadLineQC2 {
+class HeadLineQC {
   int? parameterNo;
   String? className;
   String? measuredItem;
@@ -7,7 +7,7 @@ class HeadLineQC2 {
   String? gaugeNo;
   String? actionPoint;
 
-  HeadLineQC2(
+  HeadLineQC(
       {this.parameterNo,
       this.className,
       this.measuredItem,
@@ -16,7 +16,7 @@ class HeadLineQC2 {
       this.gaugeNo,
       this.actionPoint});
 
-  HeadLineQC2.fromJson(Map<String, dynamic> json) {
+  HeadLineQC.fromJson(Map<String, dynamic> json) {
     parameterNo = json['Parameter No'];
     className = json['Class'];
     measuredItem = json['Measured Item'];

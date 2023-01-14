@@ -14,8 +14,13 @@ class VariantAssociateDetailScreen extends StatelessWidget {
   final String variant;
   final String? details;
   final String system;
+  final String checkSheet;
   VariantAssociateDetailScreen(
-      {Key? key, required this.variant, this.details, required this.system})
+      {Key? key,
+      required this.variant,
+      this.details,
+      required this.system,
+      required this.checkSheet})
       : super(key: key);
   final associateController = Get.put(AssociateController());
 
@@ -147,7 +152,7 @@ class VariantAssociateDetailScreen extends StatelessWidget {
                     ));
               } else if (system == SystemVariant.HeadLine.getVariant) {
                 Get.to(() => QSHeadLineHomeScreen(
-                      details: details ?? 'null',
+                      details: details,
                       measurername:
                           associateController.measurernameController.text,
                       partserialno:
@@ -155,6 +160,7 @@ class VariantAssociateDetailScreen extends StatelessWidget {
                       processno: associateController.processnameValue,
                       shift: associateController.shiftValue,
                       variant: variant,
+                      checkSheet: checkSheet,
                     ));
               }
             },

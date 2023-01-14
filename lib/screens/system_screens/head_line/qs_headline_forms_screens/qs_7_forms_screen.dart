@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:quality_system/components/custom_button_component.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/measured_value_form_field.dart';
-import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
-import 'package:quality_system/constants/enums.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/controllers/quality_station_forms_controller.dart';
 import 'package:quality_system/screens/system_screens/block_line/qs_block_line_screens/qc_summary_screen.dart';
@@ -316,21 +314,6 @@ class QS7HeadLineFormsScreen extends StatelessWidget {
                       Icons.list,
                       color: CustomTheme.of(context).secondaryText,
                       size: 15,
-                    ),
-                    options: CustomButtonOptions(
-                      width: 250,
-                      height: 70,
-                      color: CustomTheme.of(context).primaryColor,
-                      textStyle: CustomTheme.of(context).subtitle2.override(
-                            fontFamily: 'Poppins',
-                            color: CustomTheme.of(context).secondaryText,
-                            fontSize: 24,
-                          ),
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
                 ),

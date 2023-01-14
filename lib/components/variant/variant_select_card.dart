@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
-import 'package:quality_system/constants/enums.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/screens/variant_select_screen/variant_associate_screen.dart';
 
@@ -10,12 +9,14 @@ class VariantSelectCard extends StatelessWidget {
   final String? details;
   final String image;
   final String system;
+  final String checkSheet;
   const VariantSelectCard(
       {Key? key,
       required this.image,
       required this.variant,
       this.details,
-      required this.system})
+      required this.system,
+      required this.checkSheet})
       : super(key: key);
 
   @override
@@ -32,7 +33,9 @@ class VariantSelectCard extends StatelessWidget {
                 onTap: () {
                   Get.to(() => VariantAssociateDetailScreen(
                         system: system,
-                        variant: EngineVariant.OneHalfLitre.getVariant,
+                        variant: variant,
+                        checkSheet: checkSheet,
+                        details: details,
                       ));
                 },
                 child: Card(

@@ -10,10 +10,11 @@ import 'package:quality_system/controllers/auth_controller.dart';
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({Key? key}) : super(key: key);
   final AuthController authController = Get.put(AuthController());
+  final scaffoldkey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: authController.scaffoldRegisterKey,
+      key: scaffoldkey,
       backgroundColor: CustomTheme.of(context).primaryBackground,
       body: BackgroundSplashContainer(
         image: 'images/login_images/5305323.jpg',
@@ -182,30 +183,15 @@ class RegisterScreen extends StatelessWidget {
                             height: 60,
                           ),
                           CustomButtonWidget(
-                            onPressed: () {},
+                            width: 200,
+                            onPressed: () {
+                              authController.registerUser();
+                            },
                             text: 'Register',
                             icon: Icon(
                               Icons.login,
                               color: CustomTheme.of(context).primaryBtnText,
                               size: 30,
-                            ),
-                            options: CustomButtonOptions(
-                              width: 170,
-                              height: 60,
-                              color: Colors.black,
-                              textStyle: CustomTheme.of(context)
-                                  .subtitle1
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: CustomTheme.of(context).lineColor,
-                                    fontSize: 28,
-                                  ),
-                              elevation: 10,
-                              borderSide: BorderSide(
-                                color: CustomTheme.of(context).secondaryColor,
-                                width: 4,
-                              ),
-                              borderRadius: BorderRadius.circular(12),
                             ),
                           ),
                         ],

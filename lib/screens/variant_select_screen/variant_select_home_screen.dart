@@ -28,12 +28,14 @@ class VariantSelectScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: VariantSelectCard(
+                        checkSheet: checkSheet,
                         system: systemVariant,
                         image: 'images/variant_images/1.5.gif',
                         variant: EngineVariant.OneHalfLitre.getVariant),
                   ),
                   Expanded(
                     child: VariantSelectCard(
+                        checkSheet: checkSheet,
                         system: systemVariant,
                         details: 'Conventional',
                         image: 'images/variant_images/2liter.png',
@@ -41,6 +43,7 @@ class VariantSelectScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: VariantSelectCard(
+                        checkSheet: checkSheet,
                         system: systemVariant,
                         details: 'Hybrid',
                         image: 'images/variant_images/2liter.png',
@@ -54,10 +57,12 @@ class VariantSelectScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 VariantSelectCard(
+                    checkSheet: checkSheet,
                     system: systemVariant,
                     image: 'images/variant_images/1.5.gif',
                     variant: EngineVariant.OneHalfLitre.getVariant),
                 VariantSelectCard(
+                    checkSheet: checkSheet,
                     system: systemVariant,
                     image: 'images/variant_images/2liter.png',
                     variant: EngineVariant.TwoLitre.getVariant)
