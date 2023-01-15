@@ -4,11 +4,11 @@ import 'package:quality_system/components/custom_button_component.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
 import 'package:quality_system/constants/size.dart';
-import 'package:quality_system/controllers/quality_station_forms_controller.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
+import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_3_controllers/qs_3_1.5_controller.dart';
 
 class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
-  const QS3HeadLine1Point5FormsScreen(
+  QS3HeadLine1Point5FormsScreen(
       {Key? key,
       required this.variant,
       required this.shift,
@@ -24,6 +24,8 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
+
+  final controller = Get.find<QS3Headline1Point5Controller>();
 
   @override
   Widget build(BuildContext context) {

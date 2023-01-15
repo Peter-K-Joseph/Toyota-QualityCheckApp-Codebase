@@ -169,6 +169,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                 processname: processno,
                                 shift: shift,
                                 variant: variant,
+                                checkSheet: checkSheet,
+                                details: details,
                               ));
                         },
                         title: 'QC Station 5',
@@ -182,6 +184,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                 processname: processno,
                                 shift: shift,
                                 variant: variant,
+                                checkSheet: checkSheet,
+                                details: details,
                               ));
                         },
                         title: 'QC Station 6',
