@@ -9,11 +9,14 @@ import 'package:quality_system/screens/system_screens/head_line/qs_headline_form
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_3_healdine_forms/qs_3_1.5l_forms_screen.dart';
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_3_healdine_forms/qs_3_2lC_forms_screen.dart';
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_3_healdine_forms/qs_3_2lH_forms_screen.dart';
-import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_4_forms_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_4_healdine_forms/qs_4_1.5l_forms_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_4_healdine_forms/qs_4_2lC_forms_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_4_healdine_forms/qs_4_2lH_forms_screen.dart';
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_5_forms_screen.dart';
 import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_6_forms_screen.dart';
-import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_7_forms_screen.dart';
-import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_8_froms_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_7_healdine_forms/qs_7_1.5l_forms_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_7_healdine_forms/qs_7_2lC_forms_screen.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_headline_forms_screens/qs_7_healdine_forms/qs_7_2lH_forms_screen.dart';
 
 class QSHeadLineHomeScreen extends StatelessWidget {
   QSHeadLineHomeScreen(
@@ -21,6 +24,7 @@ class QSHeadLineHomeScreen extends StatelessWidget {
       required this.measurername,
       required this.variant,
       required this.shift,
+      required this.start,
       this.details,
       required this.processno,
       required this.partserialno,
@@ -34,6 +38,7 @@ class QSHeadLineHomeScreen extends StatelessWidget {
   final String processno;
   final String partserialno;
   final String checkSheet;
+  final DateTime start;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -104,6 +109,7 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                 variant: variant,
                                 checkSheet: checkSheet,
                                 details: details,
+                                start: start,
                               ));
                         },
                         title: 'QC Station 2',
@@ -150,13 +156,39 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                       QualityStationChooseCard(
                         icon: Icons.filter_4,
                         onPressed: () {
-                          Get.to(() => QS4HeadLineFormsScreen(
-                                measurername: measurername,
-                                partserialno: partserialno,
-                                processname: processno,
-                                shift: shift,
-                                variant: variant,
-                              ));
+                          if (variant == EngineVariant.TwoLitre.getVariant &&
+                              details == 'Conventional') {
+                            Get.to(
+                                () => QS4HeadLine2LitreConventionalFormsScreen(
+                                      measurername: measurername,
+                                      partserialno: partserialno,
+                                      processname: processno,
+                                      shift: shift,
+                                      variant: variant,
+                                      checkSheet: checkSheet,
+                                    ));
+                          } else if (variant ==
+                                  EngineVariant.TwoLitre.getVariant &&
+                              details == 'Hybrid') {
+                            Get.to(() => QS4HeadLine2LitreHybridFormsScreen(
+                                  measurername: measurername,
+                                  partserialno: partserialno,
+                                  processname: processno,
+                                  shift: shift,
+                                  variant: variant,
+                                  checkSheet: checkSheet,
+                                ));
+                          } else if (variant ==
+                              EngineVariant.OneHalfLitre.getVariant) {
+                            Get.to(() => QS4HeadLine1Point5FormsScreen(
+                                  measurername: measurername,
+                                  partserialno: partserialno,
+                                  processname: processno,
+                                  shift: shift,
+                                  variant: variant,
+                                  checkSheet: checkSheet,
+                                ));
+                          }
                         },
                         title: 'QC Station 4',
                       ),
@@ -193,28 +225,41 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                       QualityStationChooseCard(
                         icon: Icons.filter_4,
                         onPressed: () {
-                          Get.to(() => QS7HeadLineFormsScreen(
-                                measurername: measurername,
-                                partserialno: partserialno,
-                                processname: processno,
-                                shift: shift,
-                                variant: variant,
-                              ));
+                          if (variant == EngineVariant.TwoLitre.getVariant &&
+                              details == 'Conventional') {
+                            Get.to(
+                                () => QS7HeadLine2LitreConventionalFormsScreen(
+                                      measurername: measurername,
+                                      partserialno: partserialno,
+                                      processname: processno,
+                                      shift: shift,
+                                      variant: variant,
+                                      checkSheet: checkSheet,
+                                    ));
+                          } else if (variant ==
+                                  EngineVariant.TwoLitre.getVariant &&
+                              details == 'Hybrid') {
+                            Get.to(() => QS7HeadLine2LitreHybridFormsScreen(
+                                  measurername: measurername,
+                                  partserialno: partserialno,
+                                  processname: processno,
+                                  shift: shift,
+                                  variant: variant,
+                                  checkSheet: checkSheet,
+                                ));
+                          } else if (variant ==
+                              EngineVariant.OneHalfLitre.getVariant) {
+                            Get.to(() => QS7HeadLine1Point5FormsScreen(
+                                  measurername: measurername,
+                                  partserialno: partserialno,
+                                  processname: processno,
+                                  shift: shift,
+                                  variant: variant,
+                                  checkSheet: checkSheet,
+                                ));
+                          }
                         },
                         title: 'QC Station 7',
-                      ),
-                      QualityStationChooseCard(
-                        icon: Icons.filter_5,
-                        onPressed: () {
-                          Get.to(() => QS8HeadLineFormsScreen(
-                                measurername: measurername,
-                                partserialno: partserialno,
-                                processname: processno,
-                                shift: shift,
-                                variant: variant,
-                              ));
-                        },
-                        title: 'QC Station 8',
                       ),
                     ],
                   ),

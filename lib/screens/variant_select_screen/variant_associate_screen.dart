@@ -152,6 +152,7 @@ class VariantAssociateDetailScreen extends StatelessWidget {
                     ));
               } else if (system == SystemVariant.HeadLine.getVariant) {
                 Get.to(() => QSHeadLineHomeScreen(
+                      start: DateTime.now(),
                       details: details,
                       measurername:
                           associateController.measurernameController.text,

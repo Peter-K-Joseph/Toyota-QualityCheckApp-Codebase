@@ -8,7 +8,6 @@ import 'package:quality_system/components/quality_station/summary_button.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_2_controller.dart';
-import 'package:quality_system/screens/system_screens/system_select_screen.dart';
 
 class QS2HeadLineSummaryScreen extends StatelessWidget {
   QS2HeadLineSummaryScreen(
@@ -19,6 +18,7 @@ class QS2HeadLineSummaryScreen extends StatelessWidget {
       required this.partserialno,
       required this.measurername,
       required this.checkSheet,
+      required this.start,
       this.details})
       : super(key: key);
 
@@ -29,6 +29,7 @@ class QS2HeadLineSummaryScreen extends StatelessWidget {
   final String measurername;
   final String checkSheet;
   final String? details;
+  final DateTime start;
 
   final controller = Get.find<HeadLineQC2Controller>();
 
@@ -195,7 +196,8 @@ class QS2HeadLineSummaryScreen extends StatelessWidget {
                                             .toString()),
                                     Expanded(
                                       child: DetailTileWidget(
-                                          value: 'Class'.toString()),
+                                          value: controller.values[i].className
+                                              .toString()),
                                     ),
                                     Expanded(
                                       child: DetailTileWidget(
@@ -251,9 +253,12 @@ class QS2HeadLineSummaryScreen extends StatelessWidget {
       bottomNavigationBar: SummaryButton(
           title: 'Post',
           onPressed: () async {
-            await Get.defaultDialog(
-                title: 'Uploaded', content: const Text('Succesfully Uploaded'));
-            Get.offAll(() => SystemChooseScreen());
+            controller.postValues(
+                variant: variant,
+                measurername: measurername,
+                processname: processname,
+                shift: shift,
+                start: start);
           }),
     );
   }

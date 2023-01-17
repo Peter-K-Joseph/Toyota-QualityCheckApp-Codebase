@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:quality_system/components/custom_button_component.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/detail_tile_widget.dart';
 import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
-import 'package:quality_system/components/quality_station/summary_button.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
-import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_2_controller.dart';
-import 'package:quality_system/screens/system_screens/head_line/qs_head_line_screens/qs_summary_screens/qs_2_summary_screen.dart';
+import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_7_controllers/qs_7_1.5_controller.dart';
 
-class QS2HeadLineFormsScreen extends StatelessWidget {
-  QS2HeadLineFormsScreen(
+class QS7HeadLine1Point5FormsScreen extends StatelessWidget {
+  QS7HeadLine1Point5FormsScreen(
       {Key? key,
       required this.variant,
       required this.shift,
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      required this.checkSheet,
-      required this.start,
-      this.details})
+      required this.checkSheet})
       : super(key: key);
 
   final String variant;
@@ -29,19 +25,18 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
-  final String? details;
-  final DateTime start;
 
-  final controller = Get.find<HeadLineQC2Controller>();
+  final controller = Get.find<HeadLineQS71Point5Controller>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // key: controller.scaffoldKey,
       appBar: AppBar(
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Head Line',
+          'Head Line - Quality Station 7',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
@@ -76,7 +71,6 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
                         child: HeaderTitleWidget(
                       title: 'Variant :',
                       subtitle: variant,
-                      details: details,
                     )),
                     Expanded(
                       child: HeaderTitleWidget(
@@ -175,7 +169,9 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
                       width: sysWidth - sysWidth / 4,
                       child: Obx(() {
                         if (controller.loading.value) {
-                          return const LinearProgressIndicator();
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
                         }
                         return ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
@@ -226,45 +222,62 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
                     SizedBox(
                       width: sysWidth / 4,
                       child: Form(
-                        key: controller.formKey,
-                        autovalidateMode: AutovalidateMode.always,
+                        // key: controller.formKey,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm1 = v;
-                            })
+                            }),
+                            MeasuredItemRadioButtonField(callbackvalue: (v) {
+                              controller.pm2 = v;
+                            }),
+                            // MeasuredItemRadioButtonField(callbackvalue: (v) {
+                            //   controller.pm3 = v;
+                            // }),
+                            // MeasuredItemRadioButtonField(callbackvalue: (v) {
+                            //   controller.pm4 = v;
+                            // }),
+                            MeasuredItemRadioButtonField(callbackvalue: (v) {
+                              controller.pm5 = v;
+                            }),
+                            MeasuredItemRadioButtonField(callbackvalue: (v) {
+                              controller.pm6 = v;
+                            }),
+                            MeasuredItemRadioButtonField(callbackvalue: (v) {
+                              controller.pm7 = v;
+                            }),
+                            MeasuredItemRadioButtonField(callbackvalue: (v) {
+                              controller.pm8 = v;
+                            }),
+                            MeasuredItemRadioButtonField(callbackvalue: (v) {
+                              controller.pm9 = v;
+                            }),
                           ],
                         ),
                       ),
                     ),
                   ],
-                )
+                ),
+                const SizedBox(height: 32),
+                SizedBox(
+                  height: 60,
+                  width: sysWidth,
+                  child: CustomButtonWidget(
+                    onPressed: () {},
+                    text: 'Summary',
+                    icon: Icon(
+                      Icons.list,
+                      color: CustomTheme.of(context).secondaryText,
+                      size: 15,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: SummaryButton(onPressed: () async {
-        if (!controller.formKey.currentState!.validate()) {
-          Get.rawSnackbar(message: 'Please fill all the fileds');
-        } else {
-          Get.defaultDialog(
-              title: 'Loading', content: const CircularProgressIndicator());
-          await Future.delayed(const Duration(milliseconds: 1500), () {
-            Get.offAll(() => QS2HeadLineSummaryScreen(
-                  variant: variant,
-                  shift: shift,
-                  processname: processname,
-                  partserialno: partserialno,
-                  measurername: measurername,
-                  checkSheet: checkSheet,
-                  start: start,
-                  details: details,
-                ));
-          });
-        }
-      }),
     );
   }
 }

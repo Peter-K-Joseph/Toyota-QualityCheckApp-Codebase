@@ -2,8 +2,8 @@ class HeadLineQC {
   int? parameterNo;
   String? className;
   String? measuredItem;
-  int? noOfPosition15L;
-  int? noOfPosition20L;
+  String? noOfPosition15L;
+  String? noOfPosition20L;
   String? gaugeNo;
   String? actionPoint;
 
@@ -18,12 +18,10 @@ class HeadLineQC {
 
   HeadLineQC.fromJson(Map<String, dynamic> json) {
     parameterNo = json['Parameter No'];
-    className = json['Class'];
+    className = json['Class'] ?? 'No Class';
     measuredItem = json['Measured Item'];
-    noOfPosition15L =
-        json['No of position_1.5L'] == "_" ? 0 : json['No of position_1.5L'];
-    noOfPosition20L =
-        json['No of position_2.0L'] == "_" ? 0 : json['No of position_2.0L'];
+    noOfPosition15L = json['No of position_1.5L'];
+    noOfPosition20L = json['No of position_2.0L'];
     gaugeNo = json['Gauge No'];
     actionPoint = json['Action Point'];
   }

@@ -181,7 +181,8 @@ class QS5HeadLineSummaryScreen extends StatelessWidget {
                                             .toString()),
                                     Expanded(
                                       child: DetailTileWidget(
-                                          value: 'Class'.toString()),
+                                          value: controller.values[i].className
+                                              .toString()),
                                     ),
                                     Expanded(
                                       child: DetailTileWidget(

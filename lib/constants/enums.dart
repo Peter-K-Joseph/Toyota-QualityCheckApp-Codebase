@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-enum EngineVariant { TwoLitre, OneHalfLitre, NULL }
+enum EngineVariant { TwoLitre, OneHalfLitre, TwoLitreC, TwoLitreH, NULL }
 
 enum CheckSheet { Regular, Unique, NULL }
 
@@ -17,6 +17,10 @@ extension EngineVariantExtension on EngineVariant {
         return '2 Litre';
       case EngineVariant.OneHalfLitre:
         return '1.5 Litre';
+      case EngineVariant.TwoLitreC:
+        return '2 Litre Conventional';
+      case EngineVariant.TwoLitreH:
+        return '2 Litre Hybrid';
       default:
         return 'null';
     }

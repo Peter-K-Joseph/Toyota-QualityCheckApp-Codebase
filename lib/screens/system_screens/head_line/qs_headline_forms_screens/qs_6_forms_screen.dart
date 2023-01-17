@@ -179,7 +179,7 @@ class QS6HeadLineFormsScreen extends StatelessWidget {
                                           .toString()),
                                   Expanded(
                                     child: DetailTileWidget(
-                                        value: 'Class'.toString()),
+                                        value: controller.values[i].className!),
                                   ),
                                   Expanded(
                                     child: DetailTileWidget(

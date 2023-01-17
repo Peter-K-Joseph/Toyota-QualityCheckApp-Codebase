@@ -6,10 +6,10 @@ import 'package:quality_system/components/quality_station/detail_tile_widget.dar
 import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
-import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_3_controllers/qs_3_2C_controller.dart';
+import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_4_controllers/qs_4_2c_controller.dart';
 
-class QS3HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
-  QS3HeadLine2LitreConventionalFormsScreen(
+class QS4HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
+  QS4HeadLine2LitreConventionalFormsScreen(
       {Key? key,
       required this.variant,
       required this.shift,
@@ -26,7 +26,7 @@ class QS3HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
   final String measurername;
   final String checkSheet;
 
-  final controller = Get.find<HeadLineQS32CController>();
+  final controller = Get.find<HeadLineQS42CController>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class QS3HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Head Line - Quality Station 3',
+          'Head Line - Quality Station 4',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
@@ -453,267 +453,6 @@ class QS3HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm76 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm77 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm78 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm79 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm80 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm81 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm82 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm83 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm84 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm85 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm86 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm87 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm88 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm89 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm90 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm91 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm92 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm93 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm94 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm95 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm96 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm97 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm98 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm99 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm100 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm101 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm102 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm103 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm104 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm105 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm106 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm107 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm108 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm109 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm110 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm111 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm112 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm113 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm114 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm115 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm116 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm117 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm118 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm119 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm120 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm121 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm122 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm123 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm124 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm125 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm126 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm127 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm128 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm129 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm130 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm131 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm132 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm133 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm134 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm135 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm136 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm137 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm138 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm139 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm140 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm141 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm142 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm143 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm144 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm145 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm146 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm147 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm148 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm149 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm150 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm151 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm152 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm153 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm154 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm155 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm156 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm157 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm158 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm159 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm160 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm161 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm162 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm163 = v;
                             }),
                           ],
                         ),
