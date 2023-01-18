@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(
-                                  width: sysWidth * 0.45,
+                                  width: 500,
                                   child: TextFormField(
                                     controller:
                                         authController.userNameController,
@@ -79,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                                   height: 40,
                                 ),
                                 SizedBox(
-                                  width: sysWidth * 0.45,
+                                  width: 500,
                                   child: Obx(() {
                                     return TextFormField(
                                       cursorColor: Colors.orange,

@@ -4,12 +4,8 @@ import 'package:get/get.dart';
 import 'package:quality_system/components/custom_button_component.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
-import 'package:quality_system/components/quality_station/measured_value_form_field.dart';
-import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
-import 'package:quality_system/constants/enums.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/controllers/quality_station_forms_controller.dart';
-import 'package:quality_system/screens/system_screens/block_line/qs_block_line_screens/qc_summary_screen.dart';
 
 class QS3BlockLineFormsScreen extends StatelessWidget {
   QS3BlockLineFormsScreen({
@@ -119,85 +115,32 @@ class QS3BlockLineFormsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // FutureBuilder<ApiCallResponse>(
-                    //   future: QcOneLimitDataCall.call(),
-                    //   builder: (context, snapshot) {
-                    //     // Customize what your widget looks like when it's loading.
-                    //     if (!snapshot.hasData) {
-                    //       return const LoadingWidget();
-                    //     }
-                    //     final actionllQcOneLimitDataResponse = snapshot.data!;
-                    //     return Builder(
-                    //       builder: (context) {
-                    //         final qc12lactionll =
-                    //             QcOneLimitDataCall.qc12lactionll(
-                    //           actionllQcOneLimitDataResponse.jsonBody,
-                    //         ).toList();
-                    //         return Column(
-                    //           mainAxisSize: MainAxisSize.max,
-                    //           children: List.generate(qc12lactionll.length,
-                    //               (qc12lactionllIndex) {
-                    //             final qc12lactionllItem =
-                    //                 qc12lactionll[qc12lactionllIndex];
-                    //             return Container(
-                    //               width: sysWidth * 0.05,
-                    //               height: sysHeight * 0.1,
-                    //               decoration: BoxDecoration(
-                    //                 color: const Color(0xFFEEEEEE),
-                    //                 borderRadius: BorderRadius.circular(10),
-                    //                 border: Border.all(
-                    //                   color:
-                    //                       CustomTheme.of(context).secondaryText,
-                    //                   width: 3,
-                    //                 ),
-                    //               ),
-                    //               child: Text(
-                    //                 getJsonField(
-                    //                   qc12lactionllItem,
-                    //                   r'''$''',
-                    //                 ).toString(),
-                    //                 textAlign: TextAlign.center,
-                    //                 style: CustomTheme.of(context)
-                    //                     .bodyText1
-                    //                     .override(
-                    //                       fontFamily: 'Poppins',
-                    //                       color: CustomTheme.of(context)
-                    //                           .secondaryText,
-                    //                     ),
-                    //               ),
-                    //             );
-                    //           }),
-                    //         );
-                    //       },
-                    //     );
-                    //   },
-                    // ),
+                    const SizedBox(),
                     Form(
                       key: controller.formKey,
                       autovalidateMode: AutovalidateMode.always,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        children: [],
+                        children: const [],
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 32),
-                SizedBox(
-                  height: 60,
-                  width: sysWidth,
-                  child: CustomButtonWidget(
-                    onPressed: () {},
-                    text: 'Summary',
-                    icon: Icon(
-                      Icons.list,
-                      color: CustomTheme.of(context).secondaryText,
-                      size: 15,
-                    ),
-                  ),
-                ),
               ],
             ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: SizedBox(
+        height: 60,
+        width: sysWidth,
+        child: CustomButtonWidget(
+          onPressed: () {},
+          text: 'Summary',
+          icon: Icon(
+            Icons.list,
+            color: CustomTheme.of(context).secondaryText,
+            size: 15,
           ),
         ),
       ),

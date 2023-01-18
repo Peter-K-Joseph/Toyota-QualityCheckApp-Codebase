@@ -59,7 +59,7 @@ class RegisterScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(
-                                  width: sysWidth * 0.45,
+                                  width: 500,
                                   child: TextFormField(
                                     controller:
                                         authController.reportglController,
@@ -86,7 +86,7 @@ class RegisterScreen extends StatelessWidget {
                                   height: 40,
                                 ),
                                 SizedBox(
-                                  width: sysWidth * 0.45,
+                                  width: 500,
                                   child: TextFormField(
                                     controller:
                                         authController.userNameController,
@@ -106,7 +106,7 @@ class RegisterScreen extends StatelessWidget {
                                   height: 40,
                                 ),
                                 SizedBox(
-                                  width: sysWidth * 0.45,
+                                  width: 500,
                                   child: TextFormField(
                                     controller:
                                         authController.employeeController,
@@ -133,7 +133,7 @@ class RegisterScreen extends StatelessWidget {
                                   height: 40,
                                 ),
                                 SizedBox(
-                                  width: sysWidth * 0.45,
+                                  width: 500,
                                   child: Obx(() {
                                     return TextFormField(
                                       cursorColor: Colors.orange,

@@ -119,6 +119,7 @@ class QS8CrankLineFormsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    const SizedBox(),
                     Form(
                       key: controller.formKey,
                       autovalidateMode: AutovalidateMode.always,
@@ -129,22 +130,21 @@ class QS8CrankLineFormsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 32),
-                SizedBox(
-                  height: 60,
-                  width: sysWidth,
-                  child: CustomButtonWidget(
-                    onPressed: () {},
-                    text: 'Summary',
-                    icon: Icon(
-                      Icons.list,
-                      color: CustomTheme.of(context).secondaryText,
-                      size: 15,
-                    ),
-                  ),
-                ),
               ],
             ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: SizedBox(
+        height: 60,
+        width: sysWidth,
+        child: CustomButtonWidget(
+          onPressed: () {},
+          text: 'Summary',
+          icon: Icon(
+            Icons.list,
+            color: CustomTheme.of(context).secondaryText,
+            size: 15,
           ),
         ),
       ),
