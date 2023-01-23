@@ -15,7 +15,9 @@ class QS4HeadLine1Point5SummaryScreen extends StatelessWidget {
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      required this.checkSheet})
+      required this.checkSheet,
+      this.details,
+      required this.start})
       : super(key: key);
 
   final String variant;
@@ -24,6 +26,8 @@ class QS4HeadLine1Point5SummaryScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
+  final String? details;
+  final DateTime start;
 
   final controller = Get.find<HeadLineQS41Point5Controller>();
 

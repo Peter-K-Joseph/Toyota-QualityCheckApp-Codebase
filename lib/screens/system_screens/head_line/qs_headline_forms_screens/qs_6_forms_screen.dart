@@ -20,7 +20,8 @@ class QS6HeadLineFormsScreen extends StatelessWidget {
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      this.details})
+      this.details,
+      required this.start})
       : super(key: key);
 
   final String variant;
@@ -30,6 +31,7 @@ class QS6HeadLineFormsScreen extends StatelessWidget {
   final String measurername;
   final String checkSheet;
   final String? details;
+  final DateTime start;
   final controller = Get.find<HeadLineQC6Controller>();
 
   @override
@@ -293,12 +295,15 @@ class QS6HeadLineFormsScreen extends StatelessWidget {
               title: 'Loading', content: const CircularProgressIndicator());
           await Future.delayed(const Duration(milliseconds: 1500), () {
             Get.offAll(() => QS6HeadLineSummaryScreen(
-                variant: variant,
-                shift: shift,
-                processname: processname,
-                partserialno: partserialno,
-                measurername: measurername,
-                checkSheet: checkSheet));
+                  variant: variant,
+                  shift: shift,
+                  processname: processname,
+                  partserialno: partserialno,
+                  measurername: measurername,
+                  checkSheet: checkSheet,
+                  start: start,
+                  details: details,
+                ));
           });
         }
       }),

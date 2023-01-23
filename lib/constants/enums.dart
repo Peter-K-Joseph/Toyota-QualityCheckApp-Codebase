@@ -96,16 +96,16 @@ enum InspectionDetailBoxType { Text, Dropdown }
 enum MeasuredItemCheck { NULL, OK, CRITICAL, NOTGOOD }
 
 extension MeasuredItemCheckExtension on MeasuredItemCheck {
-  String get getCheck {
+  int get getCheck {
     switch (this) {
       case MeasuredItemCheck.OK:
-        return 'O';
+        return 0;
       case MeasuredItemCheck.CRITICAL:
-        return '△';
+        return 1;
       case MeasuredItemCheck.NOTGOOD:
-        return 'X';
+        return 2;
       default:
-        return 'O';
+        return -1;
     }
   }
 }

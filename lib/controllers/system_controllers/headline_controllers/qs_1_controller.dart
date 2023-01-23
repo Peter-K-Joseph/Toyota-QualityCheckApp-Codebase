@@ -3,30 +3,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:quality_system/constants/enums.dart';
 import 'package:quality_system/models/systems/headline/headlineqc.dart';
+import 'package:quality_system/screens/system_screens/system_select_screen.dart';
 import 'package:quality_system/services/http_services.dart';
 
 class HeadLineQC1Controller extends GetxController {
-  String? pm1;
-  String? pm2;
-  String? pm3;
-  String? pm4;
-  String? pm5;
-  String? pm6;
-  String? pm7;
-  String? pm8;
-  String? pm9;
-  String? pm10;
-  String? pm11;
-  String? pm12;
-  String? pm13;
-  String? pm14;
-  String? pm15;
-  String? pm16;
-  String? pm17;
-  String? pm18;
-  String? pm19;
-  String? pm20;
-  String? pm21;
+  int? pm1;
+  int? pm2;
+  int? pm3;
+  int? pm4;
+  int? pm5;
+  int? pm6;
+  int? pm7;
+  int? pm8;
+  int? pm9;
+  int? pm10;
+  int? pm11;
+  int? pm12;
+  int? pm13;
+  int? pm14;
+  int? pm15;
+  int? pm16;
+  int? pm17;
+  int? pm18;
+  int? pm19;
+  int? pm20;
+  int? pm21;
 
   final formKey = GlobalKey<FormState>();
   Rx<bool> loading = false.obs;
@@ -57,48 +58,52 @@ class HeadLineQC1Controller extends GetxController {
       {required String variant,
       required String measurername,
       required String processname,
-      required String shift}) async {
-    late String endpont;
-    if (variant == EngineVariant.OneHalfLitre.getVariant) {
-      endpont = "api/v1/qc1/headline/1.5L";
-    } else if (variant == EngineVariant.TwoLitreC.getVariant) {
-      endpont = "api/v1/qc1/headline/2.0L/Conventional";
-    } else if (variant == EngineVariant.TwoLitreH.getVariant) {
-      endpont = "api/v1/qc1/headline/2.0L/Hybrid";
-    }
+      required String shift,
+      required DateTime start}) async {
+    String? endpont;
+
     try {
       loading(true);
-
-      final result = await httpServices.postRequest(endpoint: endpont, data: {
-        "process-number": processname,
-        "measurer-name": measurername,
-        "swift-name": shift,
-        "engine-variant": variant,
-        "pm1": pm1,
-        "pm2": pm2,
-        "pm3": pm3,
-        "pm4": pm4,
-        "pm5": pm5,
-        "pm6": pm6,
-        "pm7": pm7,
-        "pm8": pm8,
-        "pm9": pm9,
-        "pm10": pm10,
-        "pm11": pm11,
-        "pm12": pm12,
-        "pm13": pm13,
-        "pm14": pm14,
-        "pm15": pm15,
-        "pm16": pm16,
-        "pm17": pm17,
-        "pm18": pm18,
-        "pm19": pm19,
-        "pm20": pm20,
-        "pm21": pm21
+      if (variant == EngineVariant.OneHalfLitre.getVariant) {
+        endpont = "api/v1/qc1/headline/1.5L";
+      } else if (variant == EngineVariant.TwoLitreC.getVariant) {
+        endpont = "api/v1/qc1/headline/2.0L/Conventional";
+      } else if (variant == EngineVariant.TwoLitreH.getVariant) {
+        endpont = "api/v1/qc1/headline/2.0L/Hybrid";
+      }
+      final result = await httpServices.postRequest(endpoint: endpont!, data: {
+        "process_name": processname,
+        "measurer_name": measurername,
+        "shift": shift,
+        "model_name": variant,
+        "time": {"start": start.toIso8601String()},
+        "Top surface Milling surface condition": pm1,
+        "Top surface processing knock holes": pm2,
+        "Top cam housing assembly hole": pm3,
+        "Top face clamp holes": pm4,
+        "Top face clamp hole diameter": pm5,
+        "Top face clamp hole depth": pm6,
+        "Top face cam housing assembly hole depth diameter": pm7,
+        "Top face cam housing assembly hole depth": pm8,
+        "Top face- Machining kcock hole pre drill diameter": pm9,
+        "Top face- Machining kcock hole pre drill depth": pm10,
+        "Top face machining knock hole diameter": pm11,
+        "Top face machining knock hole depth": pm12,
+        "EX surface Milling surface condition": pm13,
+        "EX surface QR Code &amp; part number Engraving condition": pm14,
+        "Bottom surface Milling surface condition": pm15,
+        "Bottom side clamp holes": pm16,
+        "Laser clad groove milling": pm17,
+        "Laser clad groove washed state": pm18,
+        "Bottom clamp hole diameter": pm19,
+        "Bottom clamp hole depth": pm20,
+        "Bottom face INT. laser cladding hole diameter": pm21
       });
-
-      print(result.body);
-      print(result.statusCode);
+      if (result.statusCode == 201) {
+        await Get.defaultDialog(
+            title: 'Uploaded', content: const Text('Succesfully Uploaded'));
+        Get.offAll(() => SystemChooseScreen());
+      }
       loading(false);
     } catch (e) {
       print(e);

@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quality_system/components/custom_button_component.dart';
 import 'package:quality_system/components/custom_theme_component.dart';
+import 'package:quality_system/components/quality_station/detail_tile_widget.dart';
 import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_7_controllers/qs_7_2h_controller.dart';
-import 'package:quality_system/screens/system_screens/head_line/qs_head_line_screens/qs_summary_screens/qs_7_healdine_sumamry_screens/qs_7_2lH_summary_screen.dart';
 
-import '../../../../../components/quality_station/detail_tile_widget.dart';
-
-class QS7HeadLine2LitreHybridFormsScreen extends StatelessWidget {
-  QS7HeadLine2LitreHybridFormsScreen(
+class QS7HeadLine2LitreHybridSummaryScreen extends StatelessWidget {
+  QS7HeadLine2LitreHybridSummaryScreen(
       {Key? key,
       required this.variant,
       required this.shift,
@@ -29,15 +27,14 @@ class QS7HeadLine2LitreHybridFormsScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
-  final DateTime start;
   final String? details;
+  final DateTime start;
 
   final controller = Get.find<HeadLineQS72HController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
       appBar: AppBar(
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
@@ -228,40 +225,29 @@ class QS7HeadLine2LitreHybridFormsScreen extends StatelessWidget {
                     SizedBox(
                       width: sysWidth / 4,
                       child: Form(
-                        // key: controller.formKey,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm1 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm2 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm3 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm4 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm5 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm6 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm7 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm8 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm9 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm10 = v;
-                            }),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm1),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm2),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm3),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm4),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm5),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm6),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm7),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm8),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm9),
+                            MeasuredItemRadioButtonField(
+                                assignedValue: controller.pm10),
                           ],
                         ),
                       ),
@@ -274,25 +260,12 @@ class QS7HeadLine2LitreHybridFormsScreen extends StatelessWidget {
                   width: sysWidth,
                   child: CustomButtonWidget(
                     onPressed: () {
-                      if (!controller.formKey.currentState!.validate()) {
-                        Get.rawSnackbar(message: 'Please fill all the fileds');
-                      } else {
-                        Get.defaultDialog(
-                            title: 'Loading',
-                            content: const CircularProgressIndicator());
-                        Future.delayed(const Duration(milliseconds: 1500), () {
-                          Get.offAll(() => QS7HeadLine2LitreHybridSummaryScreen(
-                                variant: variant,
-                                shift: shift,
-                                processname: processname,
-                                partserialno: partserialno,
-                                measurername: measurername,
-                                checkSheet: checkSheet,
-                                start: start,
-                                details: details,
-                              ));
-                        });
-                      }
+                      controller.postValues(
+                          variant: variant,
+                          measurername: measurername,
+                          processname: processname,
+                          shift: shift,
+                          start: start);
                     },
                     text: 'Summary',
                     icon: Icon(

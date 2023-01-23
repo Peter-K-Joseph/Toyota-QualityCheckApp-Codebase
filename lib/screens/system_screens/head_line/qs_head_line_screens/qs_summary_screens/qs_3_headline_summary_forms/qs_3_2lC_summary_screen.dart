@@ -7,10 +7,9 @@ import 'package:quality_system/components/quality_station/measured_value_radio_b
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_3_controllers/qs_3_2c_controller.dart';
-import 'package:quality_system/screens/system_screens/head_line/qs_head_line_screens/qs_summary_screens/qs_3_headline_summary_forms/qs_3_2lC_summary_screen.dart';
 
-class QS3HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
-  QS3HeadLine2LitreConventionalFormsScreen(
+class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
+  QS3HeadLine2LitreConventionalSummaryScreen(
       {Key? key,
       required this.variant,
       required this.shift,
@@ -28,8 +27,8 @@ class QS3HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
-  final DateTime start;
   final String? details;
+  final DateTime start;
 
   final controller = Get.find<HeadLineQS32CController>();
 
@@ -227,7 +226,6 @@ class QS3HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
                     SizedBox(
                       width: sysWidth / 4,
                       child: Form(
-                        // key: controller.formKey,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -614,29 +612,7 @@ class QS3HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
                   height: 60,
                   width: sysWidth,
                   child: CustomButtonWidget(
-                    onPressed: () async {
-                      if (!controller.formKey.currentState!.validate()) {
-                        Get.rawSnackbar(message: 'Please fill all the fileds');
-                      } else {
-                        Get.defaultDialog(
-                            title: 'Loading',
-                            content: const CircularProgressIndicator());
-                        await Future.delayed(const Duration(milliseconds: 1500),
-                            () {
-                          Get.offAll(
-                              () => QS3HeadLine2LitreConventionalSummaryScreen(
-                                    variant: variant,
-                                    shift: shift,
-                                    processname: processname,
-                                    partserialno: partserialno,
-                                    measurername: measurername,
-                                    checkSheet: checkSheet,
-                                    start: start,
-                                    details: details,
-                                  ));
-                        });
-                      }
-                    },
+                    onPressed: () {},
                     text: 'Summary',
                     icon: Icon(
                       Icons.list,

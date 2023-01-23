@@ -7,7 +7,7 @@ import 'package:quality_system/screens/system_screens/system_select_screen.dart'
 import 'package:quality_system/services/http_services.dart';
 
 class HeadLineQC2Controller extends GetxController {
-  String? pm1;
+  int? pm1;
   Rx<bool> loading = false.obs;
   final values = <HeadLineQC>[].obs;
   final formKey = GlobalKey<FormState>();
@@ -55,16 +55,10 @@ class HeadLineQC2Controller extends GetxController {
         "measurer_name": measurername,
         "shift": shift,
         "model_name": variant,
-        "time": {
-          "start": start.toIso8601String(),
-          "end": DateTime.now().toIso8601String()
-        },
+        "time": {"start": start.toIso8601String()},
         "Bottom surface Overall part Appearance": pm1
       });
-
-      print(result.body);
-      print(result.statusCode);
-      if (result.statusCode == 200) {
+      if (result.statusCode == 201) {
         await Get.defaultDialog(
             title: 'Uploaded', content: const Text('Succesfully Uploaded'));
         Get.offAll(() => SystemChooseScreen());

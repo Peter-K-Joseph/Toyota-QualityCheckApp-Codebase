@@ -5,17 +5,19 @@ import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
-import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_3_controllers/qs_3_1.5_controller.dart';
+import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_3_controllers/qs_3_2h_controller.dart';
 
-class QS3HeadLine1Point5SummaryScreen extends StatelessWidget {
-  QS3HeadLine1Point5SummaryScreen(
+class QS3HeadLine2LitreHybridSummaryScreen extends StatelessWidget {
+  QS3HeadLine2LitreHybridSummaryScreen(
       {Key? key,
       required this.variant,
       required this.shift,
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      required this.checkSheet})
+      required this.checkSheet,
+      this.details,
+      required this.start})
       : super(key: key);
 
   final String variant;
@@ -24,13 +26,14 @@ class QS3HeadLine1Point5SummaryScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
+  final String? details;
+  final DateTime start;
 
-  final controller = Get.find<HeadLineQS31Point5Controller>();
+  final controller = Get.find<HeadLineQS32HController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
       appBar: AppBar(
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
@@ -291,10 +294,6 @@ class QS3HeadLine1Point5SummaryScreen extends StatelessWidget {
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm60),
                           MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm61),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm62),
-                          MeasuredItemRadioButtonField(
                               assignedValue: controller.pm63),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm64),
@@ -427,10 +426,6 @@ class QS3HeadLine1Point5SummaryScreen extends StatelessWidget {
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm128),
                           MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm129),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm130),
-                          MeasuredItemRadioButtonField(
                               assignedValue: controller.pm131),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm132),
@@ -450,18 +445,6 @@ class QS3HeadLine1Point5SummaryScreen extends StatelessWidget {
                               assignedValue: controller.pm139),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm140),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm141),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm142),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm143),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm144),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm145),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm146),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm147),
                           MeasuredItemRadioButtonField(
@@ -491,13 +474,11 @@ class QS3HeadLine1Point5SummaryScreen extends StatelessWidget {
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm160),
                           MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm161),
-                          MeasuredItemRadioButtonField(
                               assignedValue: controller.pm162),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm163),
                           MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm164),
+                              assignedValue: controller.pm165),
                         ],
                       ),
                     ),

@@ -9,7 +9,6 @@ import 'package:quality_system/components/quality_station/summary_button.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_5_controller.dart';
-import 'package:quality_system/screens/system_screens/system_select_screen.dart';
 
 class QS5HeadLineSummaryScreen extends StatelessWidget {
   QS5HeadLineSummaryScreen(
@@ -20,7 +19,8 @@ class QS5HeadLineSummaryScreen extends StatelessWidget {
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      this.details})
+      this.details,
+      required this.start})
       : super(key: key);
 
   final String variant;
@@ -30,6 +30,7 @@ class QS5HeadLineSummaryScreen extends StatelessWidget {
   final String measurername;
   final String checkSheet;
   final String? details;
+  final DateTime start;
   final controller = Get.find<HeadLineQC5Controller>();
 
   @override
@@ -277,11 +278,13 @@ class QS5HeadLineSummaryScreen extends StatelessWidget {
         ),
         bottomNavigationBar: SummaryButton(
             title: 'Post',
-            onPressed: () async {
-              await Get.defaultDialog(
-                  title: 'Uploaded',
-                  content: const Text('Succesfully Uploaded'));
-              Get.offAll(() => SystemChooseScreen());
+            onPressed: () {
+              controller.postValues(
+                  variant: variant,
+                  measurername: measurername,
+                  processname: processname,
+                  shift: shift,
+                  start: start);
             }));
   }
 }

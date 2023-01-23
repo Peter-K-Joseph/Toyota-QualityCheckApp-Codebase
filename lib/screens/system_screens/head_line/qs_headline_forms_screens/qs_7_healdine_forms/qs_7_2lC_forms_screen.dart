@@ -7,6 +7,7 @@ import 'package:quality_system/components/quality_station/measured_value_radio_b
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_7_controllers/qs_7_2c_controller.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_head_line_screens/qs_summary_screens/qs_7_healdine_sumamry_screens/qs_7_2lC_summary_screen.dart';
 
 class QS7HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
   QS7HeadLine2LitreConventionalFormsScreen(
@@ -16,7 +17,9 @@ class QS7HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      required this.checkSheet})
+      required this.checkSheet,
+      this.details,
+      required this.start})
       : super(key: key);
 
   final String variant;
@@ -25,13 +28,14 @@ class QS7HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
+  final String? details;
+  final DateTime start;
 
   final controller = Get.find<HeadLineQS72CController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
       appBar: AppBar(
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
@@ -232,12 +236,6 @@ class QS7HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm2 = v;
                             }),
-                            // MeasuredItemRadioButtonField(callbackvalue: (v) {
-                            //   controller.pm3 = v;
-                            // }),
-                            // MeasuredItemRadioButtonField(callbackvalue: (v) {
-                            //   controller.pm4 = v;
-                            // }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm5 = v;
                             }),
@@ -264,7 +262,29 @@ class QS7HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
                   height: 60,
                   width: sysWidth,
                   child: CustomButtonWidget(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (!controller.formKey.currentState!.validate()) {
+                        Get.rawSnackbar(message: 'Please fill all the fileds');
+                      } else {
+                        Get.defaultDialog(
+                            title: 'Loading',
+                            content: const CircularProgressIndicator());
+                        await Future.delayed(const Duration(milliseconds: 1500),
+                            () {
+                          Get.offAll(
+                              () => QS7HeadLine2LitreConventionalSummaryScreen(
+                                    variant: variant,
+                                    shift: shift,
+                                    processname: processname,
+                                    partserialno: partserialno,
+                                    measurername: measurername,
+                                    checkSheet: checkSheet,
+                                    start: start,
+                                    details: details,
+                                  ));
+                        });
+                      }
+                    },
                     text: 'Summary',
                     icon: Icon(
                       Icons.list,

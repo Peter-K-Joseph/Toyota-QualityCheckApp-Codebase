@@ -14,7 +14,7 @@ class HTTPServices {
   Future<http.Response> postRequest(
       {required Map<String, dynamic> data, required String endpoint}) async {
     final response = await http.post(Uri.parse('$port_address/$endpoint'),
-        headers: {'content-type': 'application/json'}, body: json.encode(data));
+        headers: {'content-type': 'application/json'}, body: jsonEncode(data));
     return response;
   }
 }

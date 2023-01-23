@@ -5,17 +5,19 @@ import 'package:quality_system/components/custom_theme_component.dart';
 import 'package:quality_system/components/quality_station/measured_value_radio_button.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
-import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_3_controllers/qs_3_2C_controller.dart';
+import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_3_controllers/qs_3_1.5_controller.dart';
 
-class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
-  QS3HeadLine2LitreConventionalSummaryScreen(
+class QS3HeadLine1Point5SummaryScreen extends StatelessWidget {
+  QS3HeadLine1Point5SummaryScreen(
       {Key? key,
       required this.variant,
       required this.shift,
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      required this.checkSheet})
+      required this.checkSheet,
+      this.details,
+      required this.start})
       : super(key: key);
 
   final String variant;
@@ -24,8 +26,10 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
+  final String? details;
+  final DateTime start;
 
-  final controller = Get.find<HeadLineQS32CController>();
+  final controller = Get.find<HeadLineQS31Point5Controller>();
 
   @override
   Widget build(BuildContext context) {
@@ -201,10 +205,6 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm15),
                           MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm16),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm17),
-                          MeasuredItemRadioButtonField(
                               assignedValue: controller.pm18),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm19),
@@ -212,10 +212,6 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                               assignedValue: controller.pm20),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm21),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm22),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm23),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm24),
                           MeasuredItemRadioButtonField(
@@ -263,8 +259,6 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm46),
                           MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm47),
-                          MeasuredItemRadioButtonField(
                               assignedValue: controller.pm48),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm49),
@@ -288,8 +282,6 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                               assignedValue: controller.pm58),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm59),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm60),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm61),
                           MeasuredItemRadioButtonField(
@@ -318,8 +310,6 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                               assignedValue: controller.pm73),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm74),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm75),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm76),
                           MeasuredItemRadioButtonField(
@@ -357,20 +347,6 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm93),
                           MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm94),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm95),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm96),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm97),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm98),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm99),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm100),
-                          MeasuredItemRadioButtonField(
                               assignedValue: controller.pm101),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm102),
@@ -388,16 +364,6 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                               assignedValue: controller.pm108),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm109),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm110),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm111),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm112),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm113),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm114),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm115),
                           MeasuredItemRadioButtonField(
@@ -423,10 +389,6 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm126),
                           MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm127),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm128),
-                          MeasuredItemRadioButtonField(
                               assignedValue: controller.pm129),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm130),
@@ -438,18 +400,6 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                               assignedValue: controller.pm133),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm134),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm135),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm136),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm137),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm138),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm139),
-                          MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm140),
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm141),
                           MeasuredItemRadioButtonField(
@@ -493,9 +443,9 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                           MeasuredItemRadioButtonField(
                               assignedValue: controller.pm161),
                           MeasuredItemRadioButtonField(
-                              assignedValue: controller.pm162),
-                          MeasuredItemRadioButtonField(
                               assignedValue: controller.pm163),
+                          MeasuredItemRadioButtonField(
+                              assignedValue: controller.pm164),
                         ],
                       ),
                     ),

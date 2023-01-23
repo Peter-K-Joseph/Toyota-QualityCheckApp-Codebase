@@ -94,6 +94,7 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                 variant: variant,
                                 checkSheet: checkSheet,
                                 details: details,
+                                start: start,
                               ));
                         },
                         title: 'QC Station 1',
@@ -117,8 +118,7 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                       QualityStationChooseCard(
                         icon: Icons.filter_3,
                         onPressed: () {
-                          if (variant == EngineVariant.TwoLitre.getVariant &&
-                              details == 'Conventional') {
+                          if (variant == EngineVariant.TwoLitreC.getVariant) {
                             Get.to(
                                 () => QS3HeadLine2LitreConventionalFormsScreen(
                                       measurername: measurername,
@@ -127,10 +127,11 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                       shift: shift,
                                       variant: variant,
                                       checkSheet: checkSheet,
+                                      start: start,
+                                      details: details,
                                     ));
                           } else if (variant ==
-                                  EngineVariant.TwoLitre.getVariant &&
-                              details == 'Hybrid') {
+                              EngineVariant.TwoLitreH.getVariant) {
                             Get.to(() => QS3HeadLine2LitreHybridFormsScreen(
                                   measurername: measurername,
                                   partserialno: partserialno,
@@ -138,6 +139,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                   shift: shift,
                                   variant: variant,
                                   checkSheet: checkSheet,
+                                  details: details,
+                                  start: start,
                                 ));
                           } else if (variant ==
                               EngineVariant.OneHalfLitre.getVariant) {
@@ -148,6 +151,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                   shift: shift,
                                   variant: variant,
                                   checkSheet: checkSheet,
+                                  details: details,
+                                  start: start,
                                 ));
                           }
                         },
@@ -156,8 +161,7 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                       QualityStationChooseCard(
                         icon: Icons.filter_4,
                         onPressed: () {
-                          if (variant == EngineVariant.TwoLitre.getVariant &&
-                              details == 'Conventional') {
+                          if (variant == EngineVariant.TwoLitreC.getVariant) {
                             Get.to(
                                 () => QS4HeadLine2LitreConventionalFormsScreen(
                                       measurername: measurername,
@@ -166,10 +170,11 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                       shift: shift,
                                       variant: variant,
                                       checkSheet: checkSheet,
+                                      start: start,
+                                      details: details,
                                     ));
                           } else if (variant ==
-                                  EngineVariant.TwoLitre.getVariant &&
-                              details == 'Hybrid') {
+                              EngineVariant.TwoLitreH.getVariant) {
                             Get.to(() => QS4HeadLine2LitreHybridFormsScreen(
                                   measurername: measurername,
                                   partserialno: partserialno,
@@ -177,6 +182,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                   shift: shift,
                                   variant: variant,
                                   checkSheet: checkSheet,
+                                  start: start,
+                                  details: details,
                                 ));
                           } else if (variant ==
                               EngineVariant.OneHalfLitre.getVariant) {
@@ -187,6 +194,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                   shift: shift,
                                   variant: variant,
                                   checkSheet: checkSheet,
+                                  details: details,
+                                  start: start,
                                 ));
                           }
                         },
@@ -203,6 +212,7 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                 variant: variant,
                                 checkSheet: checkSheet,
                                 details: details,
+                                start: start,
                               ));
                         },
                         title: 'QC Station 5',
@@ -218,6 +228,7 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                 variant: variant,
                                 checkSheet: checkSheet,
                                 details: details,
+                                start: start,
                               ));
                         },
                         title: 'QC Station 6',
@@ -225,8 +236,7 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                       QualityStationChooseCard(
                         icon: Icons.filter_4,
                         onPressed: () {
-                          if (variant == EngineVariant.TwoLitre.getVariant &&
-                              details == 'Conventional') {
+                          if (variant == EngineVariant.TwoLitreC.getVariant) {
                             Get.to(
                                 () => QS7HeadLine2LitreConventionalFormsScreen(
                                       measurername: measurername,
@@ -235,10 +245,11 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                       shift: shift,
                                       variant: variant,
                                       checkSheet: checkSheet,
+                                      start: start,
+                                      details: details,
                                     ));
                           } else if (variant ==
-                                  EngineVariant.TwoLitre.getVariant &&
-                              details == 'Hybrid') {
+                              EngineVariant.TwoLitreH.getVariant) {
                             Get.to(() => QS7HeadLine2LitreHybridFormsScreen(
                                   measurername: measurername,
                                   partserialno: partserialno,
@@ -246,6 +257,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                   shift: shift,
                                   variant: variant,
                                   checkSheet: checkSheet,
+                                  start: start,
+                                  details: details,
                                 ));
                           } else if (variant ==
                               EngineVariant.OneHalfLitre.getVariant) {
@@ -256,6 +269,8 @@ class QSHeadLineHomeScreen extends StatelessWidget {
                                   shift: shift,
                                   variant: variant,
                                   checkSheet: checkSheet,
+                                  start: start,
+                                  details: details,
                                 ));
                           }
                         },

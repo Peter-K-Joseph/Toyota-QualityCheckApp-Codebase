@@ -16,7 +16,9 @@ class QS3HeadLine2LitreHybridFormsScreen extends StatelessWidget {
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      required this.checkSheet})
+      required this.checkSheet,
+      required this.start,
+      this.details})
       : super(key: key);
 
   final String variant;
@@ -25,13 +27,15 @@ class QS3HeadLine2LitreHybridFormsScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
+  final String? details;
+  final DateTime start;
 
   final controller = Get.find<HeadLineQS32HController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
+      key: controller.scaffoldKey,
       appBar: AppBar(
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
@@ -407,12 +411,6 @@ class QS3HeadLine2LitreHybridFormsScreen extends StatelessWidget {
                               controller.pm60 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm61 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm62 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm63 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
@@ -611,12 +609,6 @@ class QS3HeadLine2LitreHybridFormsScreen extends StatelessWidget {
                               controller.pm128 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm129 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm130 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm131 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
@@ -645,24 +637,6 @@ class QS3HeadLine2LitreHybridFormsScreen extends StatelessWidget {
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm140 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm141 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm142 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm143 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm144 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm145 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm146 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm147 = v;
@@ -707,16 +681,10 @@ class QS3HeadLine2LitreHybridFormsScreen extends StatelessWidget {
                               controller.pm160 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm161 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm162 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm163 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm164 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm165 = v;
@@ -732,7 +700,28 @@ class QS3HeadLine2LitreHybridFormsScreen extends StatelessWidget {
                   height: 60,
                   width: sysWidth,
                   child: CustomButtonWidget(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (!controller.formKey.currentState!.validate()) {
+                        Get.rawSnackbar(message: 'Please fill all the fileds');
+                      } else {
+                        Get.defaultDialog(
+                            title: 'Loading',
+                            content: const CircularProgressIndicator());
+                        await Future.delayed(const Duration(milliseconds: 1500),
+                            () {
+                          Get.offAll(() => QS3HeadLine2LitreHybridFormsScreen(
+                                variant: variant,
+                                shift: shift,
+                                processname: processname,
+                                partserialno: partserialno,
+                                measurername: measurername,
+                                checkSheet: checkSheet,
+                                start: start,
+                                details: details,
+                              ));
+                        });
+                      }
+                    },
                     text: 'Summary',
                     icon: Icon(
                       Icons.list,

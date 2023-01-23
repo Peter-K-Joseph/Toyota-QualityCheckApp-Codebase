@@ -9,7 +9,6 @@ import 'package:quality_system/components/quality_station/summary_button.dart';
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_6_controller.dart';
-import 'package:quality_system/screens/system_screens/head_line/qs_head_line_screens/qs_summary_screens/qs_5_summary_screen.dart';
 
 class QS6HeadLineSummaryScreen extends StatelessWidget {
   QS6HeadLineSummaryScreen(
@@ -20,7 +19,8 @@ class QS6HeadLineSummaryScreen extends StatelessWidget {
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      this.details})
+      this.details,
+      required this.start})
       : super(key: key);
 
   final String variant;
@@ -30,6 +30,7 @@ class QS6HeadLineSummaryScreen extends StatelessWidget {
   final String measurername;
   final String checkSheet;
   final String? details;
+  final DateTime start;
   final controller = Get.find<HeadLineQC6Controller>();
 
   @override
@@ -268,22 +269,13 @@ class QS6HeadLineSummaryScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: SummaryButton(onPressed: () async {
-        if (!controller.formKey.currentState!.validate()) {
-          Get.rawSnackbar(message: 'Please fill all the fileds');
-        } else {
-          Get.defaultDialog(
-              title: 'Loading', content: const CircularProgressIndicator());
-          await Future.delayed(const Duration(milliseconds: 1500), () {
-            Get.offAll(() => QS5HeadLineSummaryScreen(
-                variant: variant,
-                shift: shift,
-                processname: processname,
-                partserialno: partserialno,
-                measurername: measurername,
-                checkSheet: checkSheet));
-          });
-        }
+      bottomNavigationBar: SummaryButton(onPressed: () {
+        controller.postValues(
+            variant: variant,
+            measurername: measurername,
+            processname: processname,
+            shift: shift,
+            start: start);
       }),
     );
   }

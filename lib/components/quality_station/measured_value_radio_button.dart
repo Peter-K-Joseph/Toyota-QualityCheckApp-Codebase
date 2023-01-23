@@ -8,8 +8,8 @@ class MeasuredItemRadioButtonField extends StatefulWidget {
   const MeasuredItemRadioButtonField(
       {Key? key, this.callbackvalue, this.assignedValue})
       : super(key: key);
-  final String? assignedValue;
-  final StringCallback? callbackvalue;
+  final int? assignedValue;
+  final IntCallback? callbackvalue;
 
   @override
   State<MeasuredItemRadioButtonField> createState() =>

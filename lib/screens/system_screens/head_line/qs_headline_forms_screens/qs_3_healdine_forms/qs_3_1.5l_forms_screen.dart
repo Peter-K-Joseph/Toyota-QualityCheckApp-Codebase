@@ -7,6 +7,7 @@ import 'package:quality_system/components/quality_station/measured_value_radio_b
 import 'package:quality_system/constants/size.dart';
 import 'package:quality_system/components/quality_station/header_text_widget.dart';
 import 'package:quality_system/controllers/system_controllers/headline_controllers/qs_3_controllers/qs_3_1.5_controller.dart';
+import 'package:quality_system/screens/system_screens/head_line/qs_head_line_screens/qs_summary_screens/qs_3_headline_summary_forms/qs_3_1.5l_summary_screen.dart';
 
 class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
   QS3HeadLine1Point5FormsScreen(
@@ -16,7 +17,9 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
       required this.processname,
       required this.partserialno,
       required this.measurername,
-      required this.checkSheet})
+      required this.checkSheet,
+      this.details,
+      required this.start})
       : super(key: key);
 
   final String variant;
@@ -25,6 +28,8 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
   final String partserialno;
   final String measurername;
   final String checkSheet;
+  final DateTime start;
+  final String? details;
 
   final controller = Get.find<HeadLineQS31Point5Controller>();
 
@@ -272,12 +277,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                               controller.pm15 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm16 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm17 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm18 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
@@ -288,12 +287,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm21 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm22 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm23 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm24 = v;
@@ -365,9 +358,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                               controller.pm46 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm47 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm48 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
@@ -402,9 +392,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm59 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm60 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm61 = v;
@@ -447,9 +434,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm74 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm75 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm76 = v;
@@ -506,27 +490,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                               controller.pm93 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm94 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm95 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm96 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm97 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm98 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm99 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm100 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm101 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
@@ -552,21 +515,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm109 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm110 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm111 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm112 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm113 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm114 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm115 = v;
@@ -605,12 +553,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                               controller.pm126 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm127 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm128 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm129 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
@@ -627,24 +569,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm134 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm135 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm136 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm137 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm138 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm139 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm140 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm141 = v;
@@ -710,9 +634,6 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                               controller.pm161 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
-                              controller.pm162 = v;
-                            }),
-                            MeasuredItemRadioButtonField(callbackvalue: (v) {
                               controller.pm163 = v;
                             }),
                             MeasuredItemRadioButtonField(callbackvalue: (v) {
@@ -729,7 +650,28 @@ class QS3HeadLine1Point5FormsScreen extends StatelessWidget {
                   height: 60,
                   width: sysWidth,
                   child: CustomButtonWidget(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (!controller.formKey.currentState!.validate()) {
+                        Get.rawSnackbar(message: 'Please fill all the fileds');
+                      } else {
+                        Get.defaultDialog(
+                            title: 'Loading',
+                            content: const CircularProgressIndicator());
+                        await Future.delayed(const Duration(milliseconds: 1500),
+                            () {
+                          Get.offAll(() => QS3HeadLine1Point5SummaryScreen(
+                                variant: variant,
+                                shift: shift,
+                                processname: processname,
+                                partserialno: partserialno,
+                                measurername: measurername,
+                                checkSheet: checkSheet,
+                                start: start,
+                                details: details,
+                              ));
+                        });
+                      }
+                    },
                     text: 'Summary',
                     icon: Icon(
                       Icons.list,

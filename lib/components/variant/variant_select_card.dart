@@ -124,7 +124,7 @@ class VariantSelectCard extends StatelessWidget {
                                       ),
                                 ),
                                 const SizedBox(
-                                  height: 28,
+                                  height: 20,
                                 ),
                                 Text(
                                   variant,
@@ -133,25 +133,9 @@ class VariantSelectCard extends StatelessWidget {
                                       CustomTheme.of(context).title1.override(
                                             fontFamily: 'Poppins',
                                             color: const Color(0xFF262D34),
-                                            fontSize: 50,
+                                            fontSize: 42,
                                           ),
                                 ),
-                                details != null
-                                    ? Text(
-                                        "( ${details!} )",
-                                        textAlign: TextAlign.center,
-                                        style: CustomTheme.of(context)
-                                            .title1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: const Color(0xFF262D34),
-                                              fontSize: 18,
-                                            ),
-                                      )
-                                    : const SizedBox(),
-                                const SizedBox(
-                                  height: 12,
-                                )
                               ],
                             ),
                           ),

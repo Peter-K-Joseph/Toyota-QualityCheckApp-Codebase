@@ -39,7 +39,7 @@ class VariantSelectScreen extends StatelessWidget {
                         system: systemVariant,
                         details: 'Conventional',
                         image: 'images/variant_images/2liter.png',
-                        variant: EngineVariant.TwoLitre.getVariant),
+                        variant: EngineVariant.TwoLitreC.getVariant),
                   ),
                   Expanded(
                     child: VariantSelectCard(
@@ -47,7 +47,7 @@ class VariantSelectScreen extends StatelessWidget {
                         system: systemVariant,
                         details: 'Hybrid',
                         image: 'images/variant_images/2liter.png',
-                        variant: EngineVariant.TwoLitre.getVariant),
+                        variant: EngineVariant.TwoLitreH.getVariant),
                   )
                 ],
               );
