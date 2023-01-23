@@ -40,7 +40,7 @@ class QS7HeadLine2LitreConventionalFormsScreen extends StatelessWidget {
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Head Line - Quality Station 3',
+          'Head Line - Quality Station 7',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,

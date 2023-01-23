@@ -36,7 +36,6 @@ class QS1HeadLineFormsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
       appBar: qualityStationAppBar(
           context: context,
           title: 'Head Line - QC Station 1',

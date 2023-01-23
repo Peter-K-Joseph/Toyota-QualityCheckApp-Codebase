@@ -34,12 +34,11 @@ class QS3HeadLine1Point5SummaryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
       appBar: AppBar(
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Head Line - Quality Station 3',
+          'Head Line - Quality Station 3 Summary',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,

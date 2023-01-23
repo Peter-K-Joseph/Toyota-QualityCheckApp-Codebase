@@ -37,12 +37,11 @@ class QS7HeadLine2LitreHybridFormsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
       appBar: AppBar(
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Head Line - Quality Station 3',
+          'Head Line - Quality Station 7',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,

@@ -41,7 +41,7 @@ class QS2HeadLineFormsScreen extends StatelessWidget {
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Head Line',
+          'Head Line - QC Station 2',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,

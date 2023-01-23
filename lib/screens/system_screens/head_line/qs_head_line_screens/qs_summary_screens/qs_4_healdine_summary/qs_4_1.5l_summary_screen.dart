@@ -39,7 +39,7 @@ class QS4HeadLine1Point5SummaryScreen extends StatelessWidget {
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Head Line - Quality Station 4',
+          'Head Line - Quality Station 4 Summary',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,

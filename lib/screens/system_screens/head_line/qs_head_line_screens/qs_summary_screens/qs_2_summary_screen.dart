@@ -40,7 +40,7 @@ class QS2HeadLineSummaryScreen extends StatelessWidget {
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Summary - Headline Quality Check Station 2',
+          'Headline QC Station 2 Summary',
           style: CustomTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,

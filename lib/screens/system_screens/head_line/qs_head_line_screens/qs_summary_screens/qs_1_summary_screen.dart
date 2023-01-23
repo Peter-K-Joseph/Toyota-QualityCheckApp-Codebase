@@ -35,10 +35,9 @@ class QS1HeadLineSummaryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
       appBar: qualityStationAppBar(
           context: context,
-          title: 'Head Line - QC Station 1',
+          title: 'Head Line - QC Station 1 Summary',
           checksheet: checkSheet),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
