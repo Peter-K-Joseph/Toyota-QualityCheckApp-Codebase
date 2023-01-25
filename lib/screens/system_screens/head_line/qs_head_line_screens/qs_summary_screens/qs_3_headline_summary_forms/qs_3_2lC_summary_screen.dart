@@ -612,7 +612,14 @@ class QS3HeadLine2LitreConventionalSummaryScreen extends StatelessWidget {
                   height: 60,
                   width: sysWidth,
                   child: CustomButtonWidget(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.postValues(
+                          variant: variant,
+                          measurername: measurername,
+                          processname: processname,
+                          shift: shift,
+                          start: start);
+                    },
                     text: 'Summary',
                     icon: Icon(
                       Icons.list,

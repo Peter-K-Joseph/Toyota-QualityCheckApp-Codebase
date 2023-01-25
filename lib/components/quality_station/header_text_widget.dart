@@ -61,7 +61,6 @@ class BlockFormHeaderComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width ?? sysWidth * 0.05,
       height: height ?? sysHeight * 0.1,
       decoration: BoxDecoration(
         color: color,

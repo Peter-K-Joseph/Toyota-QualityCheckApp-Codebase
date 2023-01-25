@@ -34,7 +34,6 @@ class QS4HeadLine1Point5SummaryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: controller.scaffoldKey,
       appBar: AppBar(
         backgroundColor: CustomTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
@@ -412,7 +411,14 @@ class QS4HeadLine1Point5SummaryScreen extends StatelessWidget {
                   height: 60,
                   width: sysWidth,
                   child: CustomButtonWidget(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.postValues(
+                          variant: variant,
+                          measurername: measurername,
+                          processname: processname,
+                          shift: shift,
+                          start: start);
+                    },
                     text: 'Summary',
                     icon: Icon(
                       Icons.list,
